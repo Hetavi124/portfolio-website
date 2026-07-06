@@ -1,1055 +1,851 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Hetavi Shah | Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hetavi Shah | Growth & Marketing Operations</title>
+<meta name="description" content="Portfolio of Hetavi Shah. Social media, performance marketing, email & CRM, sales and business development. Problem in, result out.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#060C14;
-  --bg2:#0C1624;
-  --bg3:#111E30;
-  --gold:#D4972A;
-  --gold-dim:rgba(212,151,42,0.12);
-  --gold-border:rgba(212,151,42,0.25);
-  --white:#FFFFFF;
-  --off:#F5F7FA;
-  --t1:rgba(255,255,255,0.92);
-  --t2:rgba(255,255,255,0.55);
-  --t3:rgba(255,255,255,0.28);
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --card:#0E1A2A;
-  --card2:#121F32;
-  --green:#00C896;
-  --green-dim:rgba(0,200,150,0.10);
+  --paper:#F4F6F2;
+  --ink:#0E1F17;
+  --ink-soft:rgba(14,31,23,.66);
+  --line:rgba(14,31,23,.14);
+  --card:#FFFFFF;
+  --green:#0E8A4F;
+  --green-wash:#DFF0E6;
+  --green-deep:#0A6B3D;
+  --red:#D64541;
+  --red-wash:#FAE6E4;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'Instrument Sans',system-ui,sans-serif;
+  --disp:'Bricolage Grotesque',var(--sans);
+  --maxw:1180px;
+  --pad:clamp(20px,4vw,56px);
 }
-html{font-size:16px;scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:'Space Grotesk',sans-serif;
-  font-weight:400;
-  color:var(--t1);
-  background:var(--bg);
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
-}
-
-/* SCANLINE TEXTURE */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* HERO */
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:0;
-  overflow:hidden;
-  z-index:1;
-}
-
-/* Animated grid background */
-.hero-grid{
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size:72px 72px;
-  mask-image:radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%);
-}
-
-/* Glow orb */
-.hero-orb{
-  position:absolute;
-  top:-200px;
-  left:50%;
-  transform:translateX(-50%);
-  width:900px;
-  height:600px;
-  background:radial-gradient(ellipse at center, rgba(212,151,42,0.08) 0%, transparent 65%);
-  pointer-events:none;
-}
-.hero-orb2{
-  position:absolute;
-  bottom:-100px;
-  right:-200px;
-  width:600px;
-  height:600px;
-  background:radial-gradient(ellipse at center, rgba(0,200,150,0.05) 0%, transparent 65%);
-  pointer-events:none;
-}
-
-.hero-nav{
-  position:relative;
-  z-index:2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:28px 60px;
-  border-bottom:1px solid var(--border);
-}
-.hero-nav-logo{
-  font-family:'Space Mono',monospace;
-  font-size:13px;
-  font-weight:700;
-  color:var(--gold);
-  letter-spacing:0.06em;
-}
-.hero-nav-tag{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--t3);
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-}
-
-.hero-body{
-  position:relative;
-  z-index:2;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:60px 60px 20px;
-  text-align:center;
-}
-
-.hero-status{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:var(--green-dim);
-  border:1px solid rgba(0,200,150,0.2);
-  border-radius:100px;
-  padding:5px 14px;
-  margin-bottom:36px;
-}
-.hero-status-dot{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 8px var(--green);
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero-status span{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--green);
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-}
-
-.hero-name{
-  font-size:clamp(56px,8vw,110px);
-  font-weight:700;
-  line-height:0.92;
-  letter-spacing:-0.02em;
-  margin-bottom:8px;
-  color:var(--t1);
-}
-.hero-name .outline{
-  color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,0.2);
-}
-
-.hero-sub{
-  font-family:'Space Mono',monospace;
-  font-size:12px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:28px;
-}
-
-.hero-desc{
-  max-width:540px;
-  font-size:15px;
-  font-weight:300;
-  color:var(--t2);
-  line-height:1.75;
-  margin-bottom:48px;
-}
-
-.hero-stats{
-  display:flex;
-  gap:0;
-  border:1px solid var(--border2);
-  border-radius:12px;
-  overflow:hidden;
-  margin-bottom:48px;
-}
-.hstat{
-  padding:20px 36px;
-  border-right:1px solid var(--border2);
-  text-align:center;
-}
-.hstat:last-child{border-right:none}
-.hstat-n{
-  font-family:'Space Mono',monospace;
-  font-size:26px;
-  font-weight:700;
-  color:var(--gold);
-  display:block;
-  line-height:1;
-  margin-bottom:5px;
-}
-.hstat-l{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:var(--t3);
-}
-
-.hero-links{
-  display:flex;
-  gap:24px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.hero-links a{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:var(--t3);
-  text-decoration:none;
-  transition:color 0.2s;
-}
-.hero-links a:hover{color:var(--gold)}
-
-.hero-scroll{
-  position:relative;
-  z-index:2;
-  padding:24px 60px;
-  border-top:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.hero-scroll-label{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--t3);
-}
-.hero-scroll-bar{
-  flex:1;
-  height:1px;
-  background:var(--border);
-  margin:0 24px;
-  position:relative;
-  overflow:hidden;
-}
-.hero-scroll-bar::after{
-  content:'';
-  position:absolute;
-  top:0;left:-100%;
-  width:60%;
-  height:100%;
-  background:linear-gradient(90deg, transparent, var(--gold), transparent);
-  animation:scan 3s linear infinite;
-}
-@keyframes scan{to{left:200%}}
-
-/* MAIN */
-main{
-  position:relative;
-  z-index:1;
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 60px 100px;
-}
-
-/* SECTION HEADING */
-.sh{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin:80px 0 32px;
-}
-.sh-num{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--gold);
-  letter-spacing:0.14em;
-  border:1px solid var(--gold-border);
-  padding:4px 10px;
-  border-radius:4px;
-}
-.sh-line{flex:1;height:1px;background:var(--border2)}
-.sh h2{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:0.22em;
-  color:var(--t3);
-}
-
-/* PROJECT CARDS */
-.projects{display:flex;flex-direction:column;gap:12px}
-
-.pcard{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  transition:border-color 0.25s, transform 0.2s;
-  position:relative;
-}
-.pcard::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(90deg, transparent, var(--gold-border), transparent);
-  opacity:0;
-  transition:opacity 0.3s;
-}
-.pcard:hover{border-color:var(--border2);transform:translateY(-2px)}
-.pcard:hover::before{opacity:1}
-
-.pcard-inner{display:grid;grid-template-columns:64px 1fr}
-
-.pcard-sidebar{
-  background:var(--bg3);
-  border-right:1px solid var(--border);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:24px 0;
-}
-.pcard-idx{
-  font-family:'Space Mono',monospace;
-  font-size:11px;
-  font-weight:700;
-  color:var(--t3);
-  letter-spacing:0.06em;
-}
-.pcard-bar{
-  width:1px;
-  height:32px;
-  background:linear-gradient(to bottom, var(--gold), transparent);
-}
-
-.pcard-body{padding:24px 28px}
-
-.pcard-meta{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:14px;
-  flex-wrap:wrap;
-}
-.tag{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  padding:3px 9px;
-  border-radius:4px;
-}
-.tag-gold{color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-border)}
-.tag-dim{color:var(--t3);background:rgba(255,255,255,0.04);border:1px solid var(--border2)}
-.pcard-date{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  color:var(--t3);
-  margin-left:auto;
-  letter-spacing:0.08em;
-}
-
-.pcard-title{
-  font-size:19px;
-  font-weight:600;
-  color:var(--t1);
-  margin-bottom:4px;
-  line-height:1.25;
-  letter-spacing:-0.01em;
-}
-.pcard-org{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--gold);
-  letter-spacing:0.1em;
-  margin-bottom:14px;
-  text-transform:uppercase;
-}
-
-.pcard-desc{
-  font-size:13.5px;
-  font-weight:300;
-  color:var(--t2);
-  line-height:1.75;
-  margin-bottom:16px;
-}
-
-.pcard-points{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  margin-bottom:20px;
-}
-.pcard-points li{
-  font-size:13px;
-  font-weight:300;
-  color:rgba(255,255,255,0.65);
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
   line-height:1.6;
-  display:grid;
-  grid-template-columns:16px 1fr;
-  gap:6px;
-  align-items:start;
+  -webkit-font-smoothing:antialiased;
 }
-.pcard-points li::before{
-  content:'>';
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--gold);
-  margin-top:3px;
-}
+::selection{background:var(--green);color:#fff}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad)}
+.mono{font-family:var(--mono)}
 
-.pcard-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  padding-top:16px;
-  border-top:1px solid var(--border);
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,246,242,.9);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
 }
-.chips{display:flex;flex-wrap:wrap;gap:6px}
+.nav-in{
+  max-width:var(--maxw);margin:0 auto;
+  padding:0 var(--pad);
+  display:flex;align-items:center;gap:18px;
+  height:58px;
+}
+.brand{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.06em;text-decoration:none;white-space:nowrap}
+.brand b{color:var(--green)}
+.navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.navlinks::-webkit-scrollbar{display:none}
+.navlink{
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+  text-decoration:none;color:var(--ink-soft);
+  padding:7px 11px;border-radius:999px;white-space:nowrap;
+  border:1px solid transparent;
+  transition:color .2s,border-color .2s,background .2s;
+}
+.navlink:hover{color:var(--ink)}
+.navlink.active{color:var(--ink);border-color:var(--line);background:#fff}
+.navlink .idx{color:var(--green);margin-right:5px}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--green);width:0%}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(64px,10vh,120px) 0 clamp(48px,7vh,88px);border-bottom:1px solid var(--line)}
+.hero .eyebrow{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;
+  color:var(--ink-soft);display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(14,138,79,.35)}50%{box-shadow:0 0 0 7px rgba(14,138,79,0)}}
+.hero h1{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(38px,6.4vw,78px);
+  line-height:1.02;letter-spacing:-.02em;
+  margin:26px 0 10px;max-width:24ch;
+}
+.hero h1 .flat{color:var(--red)}
+.hero h1 .green{color:var(--green)}
+.flipchips{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:26px 0 34px}
 .chip{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.08em;
-  color:var(--t3);
-  border:1px solid var(--border2);
-  padding:3px 10px;
-  border-radius:100px;
+  font-family:var(--mono);font-size:clamp(13px,1.7vw,16px);font-weight:600;
+  padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+  background:#fff;position:relative;white-space:nowrap;
 }
+.chip small{display:block;font-weight:400;font-size:11px;color:var(--ink-soft);letter-spacing:.03em;margin-top:2px}
+.chip.red{color:var(--red);border-color:rgba(214,69,65,.35);background:var(--red-wash)}
+.chip.red::after{
+  content:"";position:absolute;left:8%;right:8%;top:34%;height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.7,0,.3,1) .9s;
+}
+.chip.green{color:var(--green-deep);border-color:rgba(14,138,79,.35);background:var(--green-wash);
+  opacity:0;transform:translateY(8px);transition:opacity .5s ease 1.5s,transform .5s ease 1.5s}
+.hero.loaded .chip.red::after{transform:scaleX(1)}
+.hero.loaded .chip.green{opacity:1;transform:none}
+.flip-arrow{font-family:var(--mono);color:var(--ink-soft);font-size:18px}
+.hero .sub{max-width:62ch;color:var(--ink-soft);font-size:clamp(16px,1.9vw,18.5px)}
+.hero-meta{
+  margin-top:40px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.03em;
+  border-top:1px dashed var(--line);padding-top:22px;
+}
+.hero-meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--green)}
+.hero-meta a:hover{color:var(--green-deep)}
 
-.pcard-results{display:flex;gap:24px;flex-wrap:wrap;flex-shrink:0}
-.res{text-align:right}
-.res-n{
-  font-family:'Space Mono',monospace;
-  font-size:14px;
-  font-weight:700;
-  color:var(--t1);
-  display:block;
-  line-height:1.2;
-}
-.res-l{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  color:var(--t3);
-  letter-spacing:0.08em;
-}
+/* ---------- sections ---------- */
+section.block{padding:clamp(56px,9vh,110px) 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+.sec-idx{font-family:var(--mono);font-size:13px;color:var(--green);letter-spacing:.1em}
+.sec-head h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.4vw,52px);letter-spacing:-.015em;line-height:1.05}
+.sec-dek{color:var(--ink-soft);max-width:64ch;margin-bottom:44px}
 
-/* ADDITIONAL */
-.addl{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
+/* ---------- case ledger ---------- */
+.case{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(22px,3.4vw,40px);margin-bottom:28px;
+  transition:transform .25s ease,box-shadow .25s ease;
 }
-.addl-note{
-  padding:14px 24px;
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--t3);
-  letter-spacing:0.08em;
-  border-bottom:1px solid var(--border);
-  background:var(--bg3);
+.case:hover{transform:translateY(-3px);box-shadow:0 18px 44px -22px rgba(14,31,23,.28)}
+.case-top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft)}
+.tag.client{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.case h3{font-family:var(--disp);font-weight:600;font-size:clamp(21px,2.6vw,29px);letter-spacing:-.01em;margin-bottom:22px;max-width:30ch}
+.ledger{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,40px)}
+@media(max-width:820px){.ledger{grid-template-columns:1fr}}
+.side-label{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;
 }
-.addl-item{
-  display:grid;
-  grid-template-columns:160px 1fr;
-  border-bottom:1px solid var(--border);
+.side-label::before{content:"";width:22px;height:3px;border-radius:2px}
+.problem .side-label{color:var(--red)} .problem .side-label::before{background:var(--red)}
+.solved .side-label{color:var(--green-deep)} .solved .side-label::before{background:var(--green)}
+.problem p,.solved p{color:var(--ink-soft);font-size:15.5px}
+.did{margin:0 0 20px;padding:0;list-style:none}
+.did li{position:relative;padding-left:22px;margin-bottom:9px;font-size:15.5px;color:var(--ink)}
+.did li::before{content:"→";position:absolute;left:0;color:var(--green);font-family:var(--mono);font-size:13px;top:2px}
+.before-stats{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.bstat{
+  font-family:var(--mono);font-size:13px;
+  background:var(--red-wash);border:1px solid rgba(214,69,65,.28);
+  border-radius:10px;padding:10px 14px;color:var(--ink);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 }
-.addl-item:last-child{border-bottom:none}
-.addl-lc{
-  padding:16px 20px;
-  border-right:1px solid var(--border);
-  display:flex;
-  align-items:center;
-}
-.addl-label{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--gold);
-}
-.addl-text{
-  padding:16px 24px;
-  font-size:13px;
-  font-weight:300;
-  color:var(--t2);
-  line-height:1.65;
-}
-.addl-text strong{color:var(--t1);font-weight:500}
+.bstat .d{color:var(--red);font-weight:600}
+.result-label{margin-top:6px}
 
-/* TOOLS */
-.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
-.tool{
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:10px 14px;
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  color:var(--t3);
-  letter-spacing:0.06em;
-  background:var(--card);
-  text-align:center;
-  transition:border-color 0.2s, color 0.2s;
+/* metric grid */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.metric{
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:14px 14px 12px;position:relative;overflow:hidden;
 }
-.tool:hover{border-color:var(--border2);color:var(--t2)}
-.tool.hot{
-  background:var(--gold-dim);
-  border-color:var(--gold-border);
-  color:var(--gold);
-}
+.m-val{font-family:var(--mono);font-weight:600;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.01em;display:block}
+.m-delta{font-family:var(--mono);font-size:12px;font-weight:600;display:inline-block;margin-top:2px}
+.m-delta.up{color:var(--green-deep)}
+.m-delta.down{color:var(--red)}
+.m-label{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.4}
+.spark{position:absolute;right:8px;top:10px;width:64px;height:26px;opacity:.9}
+.spark path{fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.m-src{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:14px;letter-spacing:.03em}
 
-/* EDU */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.edu-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:28px;
-  position:relative;
-  overflow:hidden;
-}
-.edu-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;
-  width:3px;
-  height:100%;
-  background:linear-gradient(to bottom, var(--gold), transparent);
-}
-.edu-year{
-  font-family:'Space Mono',monospace;
-  font-size:60px;
-  font-weight:700;
-  color:rgba(255,255,255,0.03);
-  position:absolute;
-  bottom:12px;
-  right:20px;
-  line-height:1;
-  letter-spacing:-0.04em;
-}
-.edu-deg{
-  font-size:15px;
-  font-weight:600;
-  color:var(--t1);
-  margin-bottom:6px;
-  line-height:1.3;
-}
-.edu-school{
-  font-size:12px;
-  font-weight:300;
-  color:var(--t2);
-  margin-bottom:16px;
-  line-height:1.5;
-}
-.edu-badge{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:var(--gold);
-  background:var(--gold-dim);
-  border:1px solid var(--gold-border);
-  padding:4px 10px;
-  border-radius:4px;
-  display:inline-block;
-}
+/* dot grid for 45 pieces */
+.dotwrap{margin-top:20px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+.dotgrid{display:grid;grid-template-columns:repeat(15,12px);gap:7px;margin-bottom:12px}
+@media(max-width:480px){.dotgrid{grid-template-columns:repeat(9,12px)}}
+.dot{width:12px;height:12px;border-radius:50%;opacity:0;transform:scale(.3)}
+.dotgrid.on .dot{animation:pop .35s ease forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+.dot.igp{background:var(--green)}
+.dot.igs{background:transparent;border:2px solid var(--green)}
+.dot.fbp{background:var(--ink)}
+.dot.fbs{background:transparent;border:2px solid var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
 
-/* CERTS */
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
-.cert{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:12px 16px;
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  transition:border-color 0.2s;
+/* small project cards */
+.minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.mini{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
+  transition:transform .25s ease,box-shadow .25s ease;
 }
-.cert:hover{border-color:var(--border2)}
-.cert-dot{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--gold);
-  flex-shrink:0;
-  margin-top:5px;
-}
-.cert-name{
-  font-size:12.5px;
-  font-weight:500;
-  color:var(--t1);
-  margin-bottom:3px;
-}
-.cert-iss{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  color:var(--t3);
-  letter-spacing:0.06em;
-}
+.mini:hover{transform:translateY(-3px);box-shadow:0 14px 34px -20px rgba(14,31,23,.3)}
+.mini h4{font-family:var(--disp);font-weight:600;font-size:18px;margin:10px 0 8px}
+.mini p{font-size:14.5px;color:var(--ink-soft)}
+.mini .pv{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;font-weight:600}
+.mini .pv.red{color:var(--red)}
+.mini .pv.green{color:var(--green-deep)}
+.mini .split{border-top:1px dashed var(--line);margin:12px 0;padding-top:12px}
 
-/* FOOTER */
-footer{
-  position:relative;
-  z-index:1;
-  border-top:1px solid var(--border);
-  padding:32px 60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:20px;
-}
-.footer-logo{
-  font-family:'Space Mono',monospace;
-  font-size:13px;
-  font-weight:700;
-  color:var(--gold);
-}
-.footer-links{display:flex;gap:28px;flex-wrap:wrap}
-.footer-links a{
-  font-family:'Space Mono',monospace;
-  font-size:9px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--t3);
-  text-decoration:none;
-  transition:color 0.2s;
-}
-.footer-links a:hover{color:var(--gold)}
+/* ---------- ticker ---------- */
+.ticker{border-bottom:1px solid var(--line);overflow:hidden;background:var(--ink);color:var(--paper)}
+.ticker-track{display:flex;gap:0;width:max-content;animation:scroll 34s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.ticker-set{display:flex;align-items:center;padding:14px 0}
+.tk{font-family:var(--mono);font-size:13px;letter-spacing:.05em;padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+.tk::after{content:"▲";color:var(--green);font-size:10px}
 
-@media(max-width:768px){
-  .hero-nav,.hero-scroll{padding:20px 24px}
-  .hero-body{padding:40px 24px 20px}
-  .hero-stats{flex-direction:column}
-  .hstat{border-right:none;border-bottom:1px solid var(--border2)}
-  .hstat:last-child{border-bottom:none}
-  main{padding:0 24px 80px}
-  .pcard-inner{grid-template-columns:48px 1fr}
-  .edu-grid{grid-template-columns:1fr}
-  footer{padding:24px}
-  .addl-item{grid-template-columns:1fr}
-  .addl-lc{border-right:none;border-bottom:1px solid var(--border)}
+/* ---------- edu / certs ---------- */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:820px){.twocol{grid-template-columns:1fr}}
+.rowitem{border-top:1px solid var(--line);padding:18px 0;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.rowitem strong{font-family:var(--disp);font-weight:600;font-size:16.5px;display:block}
+.rowitem span{color:var(--ink-soft);font-size:14px}
+.rowitem .yr{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);white-space:nowrap}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--paper);padding:clamp(64px,10vh,120px) 0}
+footer h2{font-family:var(--disp);font-weight:800;font-size:clamp(34px,5.6vw,66px);letter-spacing:-.02em;line-height:1.05;max-width:14ch}
+footer h2 em{font-style:normal;color:var(--green);position:relative}
+footer .fmeta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  font-family:var(--mono);font-size:13.5px;letter-spacing:.04em;text-decoration:none;
+  padding:13px 22px;border-radius:999px;border:1px solid rgba(244,246,242,.3);
+  color:var(--paper);transition:all .2s;
+}
+.btn:hover{border-color:var(--green);color:#fff;background:rgba(14,138,79,.25)}
+.btn.solid{background:var(--green);border-color:var(--green);color:#fff}
+.btn.solid:hover{background:var(--green-deep)}
+footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:rgba(244,246,242,.5);letter-spacing:.05em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .ticker-track{animation:none}
+  .chip.red::after{transition:none;transform:scaleX(1)}
+  .chip.green{transition:none;opacity:1;transform:none}
+  .dotgrid .dot{animation:none;opacity:1;transform:scale(1)}
+  .status-dot{animation:none}
 }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-orb"></div>
-  <div class="hero-orb2"></div>
-
-  <nav class="hero-nav">
-    <div class="hero-nav-logo">HS_PORTFOLIO</div>
-    <div class="hero-nav-tag">Performance Marketing / Growth Strategy</div>
-  </nav>
-
-  <div class="hero-body">
-    <div class="hero-status">
-      <div class="hero-status-dot"></div>
-      <span>Available for new opportunities</span>
-    </div>
-
-    <h1 class="hero-name">
-      HETAVI<br>
-      <span class="outline">SHAH</span>
-    </h1>
-    <div class="hero-sub">MSc Marketing · Oxford Brookes · Distinction</div>
-
-    <p class="hero-desc">Performance marketing and growth strategy, from content and SEO to paid media, AI workflows, and podcast production.</p>
-
-    <div class="hero-stats">
-      <div class="hstat">
-        <span class="hstat-n">+25%</span>
-        <span class="hstat-l">Conversion lift</span>
-      </div>
-      <div class="hstat">
-        <span class="hstat-n">+30%</span>
-        <span class="hstat-l">Engagement</span>
-      </div>
-      <div class="hstat">
-        <span class="hstat-n">+20%</span>
-        <span class="hstat-l">Organic traffic</span>
-      </div>
-      <div class="hstat">
-        <span class="hstat-n">5+</span>
-        <span class="hstat-l">Yrs experience</span>
-      </div>
-    </div>
-
-    <div class="hero-links">
-      <a href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a>
-      <a href="https://linkedin.com/in/hetavi-shah-0901a21b3">LinkedIn</a>
-      <a href="https://hetavishah.lovable.app">hetavishah.lovable.app</a>
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">HS<b>_</b>REPORT</a>
+    <div class="navlinks">
+      <a class="navlink" href="#social"><span class="idx">01</span>Social Media</a>
+      <a class="navlink" href="#performance"><span class="idx">02</span>Performance</a>
+      <a class="navlink" href="#email"><span class="idx">03</span>Email &amp; CRM</a>
+      <a class="navlink" href="#sales"><span class="idx">04</span>Sales</a>
+      <a class="navlink" href="#bizdev"><span class="idx">05</span>Biz Dev</a>
     </div>
   </div>
+  <div class="progress" id="progress"></div>
+</nav>
 
-  <div class="hero-scroll">
-    <span class="hero-scroll-label">Projects below</span>
-    <div class="hero-scroll-bar"></div>
-    <span class="hero-scroll-label">Scroll</span>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="status-dot"></span>
+      <span>AVAILABLE FOR NEW OPPORTUNITIES</span>
+      <span>·</span>
+      <span>GROWTH &amp; MARKETING OPERATIONS</span>
+    </div>
+    <h1>I inherit <span class="flat">flat pages</span>.<br>I hand back <span class="green">green arrows</span>.</h1>
+    <div class="flipchips">
+      <span class="chip red">▼ 10% post impressions<small>a page I inherited, June</small></span>
+      <span class="flip-arrow">→</span>
+      <span class="chip green">▲ 390% engagement<small>the same page, five weeks later</small></span>
+    </div>
+    <p class="sub">I'm Hetavi Shah. MSc Marketing, Oxford Brookes, Distinction. Five years across social media, performance marketing, email &amp; CRM, sales and business development, for brands in the UK, US, Finland, Dubai and India. Every project below is written the same way: the problem I walked into, and what the numbers looked like when I was done.</p>
+    <div class="hero-meta">
+      <span><a href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a></span>
+      <span><a href="https://linkedin.com/in/hetavi-shah-0901a21b3" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span><a href="https://hetavishah.lovable.app" target="_blank" rel="noopener">hetavishah.lovable.app</a></span>
+      <span>REPORT RANGE: 2020 → PRESENT</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 01 SOCIAL MEDIA ================= -->
+<section class="block" id="social">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">SECTION 01</span><h2>Social Media</h2></div>
+    <p class="sec-dek reveal">Multi-brand content systems built for reach beyond the follower bubble: strategy, production, trend research and publishing across Instagram, Facebook, LinkedIn, Threads and X.</p>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <span class="tag client">// JANI HAVUNEN, AUTHOR BRAND</span>
+        <span class="tag">Instagram + Facebook</span>
+        <span class="tag">2025 → Present</span>
+      </div>
+      <h3>Breaking an author brand out of its follower bubble</h3>
+      <div class="ledger">
+        <div class="problem">
+          <span class="side-label">THE PROBLEM</span>
+          <p>Content was only reaching the people who already followed the page. Reach had plateaued, video views were flat, and the account depended almost entirely on its existing audience. For a book launch that needs new readers, that is a dead end.</p>
+        </div>
+        <div class="solved">
+          <span class="side-label">WHAT I DID</span>
+          <ul class="did">
+            <li>Designed and shipped a high-velocity content system: 45 pieces in a single week across posts, stories and reels</li>
+            <li>Rebuilt creative around discovery: trend-aware reels, animated quote graphics and story-first captions engineered for non-follower distribution</li>
+            <li>Ran the full loop myself: strategy, copy, design briefs, scheduling and analytics review</li>
+          </ul>
+          <span class="side-label result-label">THE RESULT · ONE WEEK</span>
+          <div class="mgrid">
+            <div class="metric">
+              <span class="m-val" data-count="214.2" data-suffix="K" data-dec="1">0</span>
+              <span class="m-delta up">Instagram reach</span>
+              <span class="m-label">accounts reached in 7 days</span>
+            </div>
+            <div class="metric">
+              <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,22 L14,21.5 L26,21 L38,20.5 L46,19 L54,4 L62,3"/></svg>
+              <span class="m-val" data-count="28.4" data-suffix="K" data-dec="1">0</span>
+              <span class="m-delta up">▲ 123.4K%</span>
+              <span class="m-label">video views vs prior period</span>
+            </div>
+            <div class="metric">
+              <span class="m-val" data-count="99.9" data-suffix="%" data-dec="1">0</span>
+              <span class="m-delta up">▲ 9.4%</span>
+              <span class="m-label">of views from non-followers</span>
+            </div>
+            <div class="metric">
+              <span class="m-val" data-count="20332" data-comma="1">0</span>
+              <span class="m-delta up">▲ 225.8K%</span>
+              <span class="m-label">unique viewers</span>
+            </div>
+            <div class="metric">
+              <span class="m-val">1h 12m</span>
+              <span class="m-delta up">▲ 9.3K%</span>
+              <span class="m-label">total watch time</span>
+            </div>
+            <div class="metric">
+              <span class="m-val" data-count="189">0</span>
+              <span class="m-delta up">▲ 293.8%</span>
+              <span class="m-label">Facebook profile visits</span>
+            </div>
+          </div>
+          <div class="dotwrap">
+            <div class="dotgrid" id="dotgrid" aria-hidden="true"></div>
+            <div class="legend">
+              <span><i style="background:var(--green)"></i>15 IG posts</span>
+              <span><i style="border:2px solid var(--green)"></i>16 IG stories</span>
+              <span><i style="background:var(--ink)"></i>8 FB posts</span>
+              <span><i style="border:2px solid var(--ink)"></i>6 FB stories</span>
+              <span class="mono">= 45 pieces, 7 days</span>
+            </div>
+          </div>
+          <p class="m-src">Source: Meta Business Suite, 7-day window ending 6 Jul 2026</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <span class="tag client">// B2B COMPANY PAGE</span>
+        <span class="tag">LinkedIn</span>
+        <span class="tag">2026</span>
+      </div>
+      <h3>Waking up a LinkedIn page the feed had stopped showing</h3>
+      <div class="ledger">
+        <div class="problem">
+          <span class="side-label">THE PROBLEM</span>
+          <p>The page had 2,638 followers and almost nothing to show for them. Impressions were shrinking week on week and follower growth had stopped entirely. The algorithm had quietly decided this page was not worth distributing.</p>
+          <div class="before-stats">
+            <div class="bstat"><span>Post impressions / 7 days</span><span>257 <span class="d">▼ 10%</span></span></div>
+            <div class="bstat"><span>Follower growth</span><span><span class="d">0%</span> flat</span></div>
+          </div>
+        </div>
+        <div class="solved">
+          <span class="side-label">WHAT I DID</span>
+          <ul class="did">
+            <li>Replaced announcement-style posts with story-first, documentation-style content built around the founder's real journey</li>
+            <li>Tied every post to a live problem the audience is feeling right now: job insecurity, AI anxiety, burnout</li>
+            <li>Set a consistent cadence with hooks written for the first two lines, where LinkedIn decides your fate</li>
+          </ul>
+          <span class="side-label result-label">THE RESULT · 7 DAYS</span>
+          <div class="mgrid">
+            <div class="metric">
+              <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,23 L14,21 L26,19.5 L38,18.5 L50,4 L62,3.5"/></svg>
+              <span class="m-val" data-count="390" data-prefix="▲ " data-suffix="%">0</span>
+              <span class="m-delta up">49 engagements</span>
+              <span class="m-label">engagement vs prior 7 days</span>
+            </div>
+            <div class="metric">
+              <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,22 L14,20 L26,18.5 L38,16 L50,4.5 L62,3.5"/></svg>
+              <span class="m-val" data-count="296" data-prefix="▲ " data-suffix="%">0</span>
+              <span class="m-delta up">1,817 impressions</span>
+              <span class="m-label">impressions vs prior 7 days</span>
+            </div>
+            <div class="metric">
+              <span class="m-val" data-count="870">0</span>
+              <span class="m-delta up">members reached</span>
+              <span class="m-label">unique members, one week</span>
+            </div>
+            <div class="metric">
+              <span class="m-val" data-count="50" data-prefix="▲ " data-suffix="%">0</span>
+              <span class="m-delta up">profile viewers</span>
+              <span class="m-label">vs prior period</span>
+            </div>
+          </div>
+          <p class="m-src">Source: LinkedIn Analytics, 30 Jun → 6 Jul 2026</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="minis reveal">
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Four brands, one calendar</h4>
+        <p>Running social for four brands at once usually means one voice wins and three go quiet.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Built separate brand voice systems, content calendars and visual rules per brand, so an author page, a raw storytelling platform and two B2B brands can publish daily without sounding alike.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Trends move faster than approvals</h4>
+        <p>By the time most brands react to a trend or news moment, it is already over.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Set up a reactive content workflow: trend and audio research, pre-approved formats and same-day creative briefs, so timely posts ship while they still matter.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Faceless brands, human content</h4>
+        <p>Video performs best, but not every brand has someone willing to be on camera every day.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Built an AI-assisted video pipeline: avatar and lip-sync tools, voice cloning, text-driven faceless video and CapCut assembly, producing a 28-video organic bank from one recording session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 PERFORMANCE ================= -->
+<section class="block" id="performance">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">SECTION 02</span><h2>Performance Marketing</h2></div>
+    <p class="sec-dek reveal">Paid media, measurement and SEO across four markets: campaigns that answer to a dashboard, not a feeling.</p>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <span class="tag client">// INOBAL</span>
+        <span class="tag">Google Ads + Meta</span>
+        <span class="tag">GA4 · Power BI · GTM</span>
+        <span class="tag">2026 → Present</span>
+      </div>
+      <h3>Multi-market paid media with measurement people actually read</h3>
+      <div class="ledger">
+        <div class="problem">
+          <span class="side-label">THE PROBLEM</span>
+          <p>Campaigns running across the UK, US, Finland and Dubai with no unified way to see what was working. Reporting was manual, conversion tracking was incomplete, and budget decisions were being made on instinct rather than data.</p>
+        </div>
+        <div class="solved">
+          <span class="side-label">WHAT I DID</span>
+          <ul class="did">
+            <li>Managed end-to-end Google Ads and Meta campaigns across four markets, covering lead generation and ROAS optimisation</li>
+            <li>Implemented GTM tracking with a booked consultation as the primary conversion action, so ads optimise toward revenue conversations, not clicks</li>
+            <li>Built GA4 and Power BI dashboards that turned scattered campaign data into a single view stakeholders check weekly</li>
+            <li>Worked Quality Score deliberately: ad relevance, landing page experience and expected CTR treated as levers, not mysteries</li>
+          </ul>
+          <span class="side-label result-label">THE RESULT</span>
+          <div class="mgrid">
+            <div class="metric"><span class="m-val">4</span><span class="m-delta up">markets</span><span class="m-label">UK · US · FI · UAE, one system</span></div>
+            <div class="metric"><span class="m-val">1</span><span class="m-delta up">conversion truth</span><span class="m-label">booked consultations as the north-star action</span></div>
+            <div class="metric"><span class="m-val">Weekly</span><span class="m-delta up">stakeholder reporting</span><span class="m-label">automated dashboards replacing manual decks</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="minis reveal">
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>A site too slow to convert</h4>
+        <p>Audit found critically low mobile performance: slow largest contentful paint and render-blocking resources killing paid traffic before it landed.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Ran full technical SEO audits with PageSpeed Insights, SEO Site Checkup and SEOptimer, then delivered a prioritised fix roadmap: what to fix first, why, and the expected impact of each item.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Invisible domain authority</h4>
+        <p>A second brand site had very low domain strength, missing schema markup and no SPF records, hurting both rankings and email deliverability.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Documented every gap and translated technical findings into a plain-language action plan the client could hand to a developer the same day.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Organic growth that had stalled</h4>
+        <p>A growing digital brand publishing regularly with little to show in search or conversions.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Two years of end-to-end SEO and content strategy at DhruVats: keyword research, on-page work and analytics-led iteration. Organic traffic up 20%, conversions up 25%.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>A regional launch with no playbook</h4>
+        <p>An established lingerie brand, Royce, needed a regional UK consumer campaign with no existing channel strategy.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Planned and executed the integrated campaign: channel selection, audience targeting, creative briefs and coordinated execution across digital and social.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 EMAIL & CRM ================= -->
+<section class="block" id="email">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">SECTION 03</span><h2>Email &amp; CRM</h2></div>
+    <p class="sec-dek reveal">Outbound engines, lifecycle flows and CRM hygiene: email built for the inbox it actually lands in.</p>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <span class="tag client">// INOBAL</span>
+        <span class="tag">Saleshandy · Mailchimp · Brevo · HubSpot</span>
+        <span class="tag">2025 → Present</span>
+      </div>
+      <h3>A cold outbound engine built for replies, not opens</h3>
+      <div class="ledger">
+        <div class="problem">
+          <span class="side-label">THE PROBLEM</span>
+          <p>Cold email to SMBs and funded startups was landing in spam or being ignored. Marketing-speak, heavy HTML and link-stuffed first sends were tripping filters and burning the domain before a human ever read a word.</p>
+        </div>
+        <div class="solved">
+          <span class="side-label">WHAT I DID</span>
+          <ul class="did">
+            <li>Rebuilt the system around deliverability first: plain-text sends, no hyperlinks in early touches, and copy rules designed to read like a person wrote them</li>
+            <li>Wrote a four-touch sequence on a Hook, Pain, Shift, CTA framework with simple Yes/No reply triggers that make responding effortless</li>
+            <li>Layered psychology deliberately: mirroring, identity and micro-commitment across the sequence instead of one desperate pitch</li>
+            <li>Segmented targeting across US, UK, Canada and Australia/NZ, with separate angles per vertical</li>
+          </ul>
+          <span class="side-label result-label">THE RESULT</span>
+          <div class="mgrid">
+            <div class="metric"><span class="m-val">4-touch</span><span class="m-delta up">sequence</span><span class="m-label">every send has one job and one ask</span></div>
+            <div class="metric"><span class="m-val">Plain text</span><span class="m-delta up">deliverability</span><span class="m-label">built to pass filters and feel human</span></div>
+            <div class="metric"><span class="m-val">4</span><span class="m-delta up">markets</span><span class="m-label">US · UK · CA · AU/NZ verticalised</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="minis reveal">
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Email clients strip your design</h4>
+        <p>A podcast promo email needed motion and personality, but Gmail and Outlook strip CSS animation on arrival.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Engineered the motion as an animated GIF review marquee instead, inside a hand-coded 480px HTML template, so the email moves in every major client.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>A book with no email journey</h4>
+        <p>Readers who showed interest had nowhere to go next.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Built chapter-based Mailchimp HTML templates and nurture flows that walk a new subscriber from curiosity to purchase, written like letters, not blasts.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>CRM as a junk drawer</h4>
+        <p>Contacts scattered across tools, no segmentation, no ownership of follow-up.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Managed CRM systems and list hygiene across HubSpot, Mailchimp and Brevo: segmentation, automation flows and n8n workflows that cut manual workload across accounts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 SALES ================= -->
+<section class="block" id="sales">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">SECTION 04</span><h2>Sales</h2></div>
+    <p class="sec-dek reveal">Sales enablement: the scripts, decks and assets that turn interest into booked conversations.</p>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <span class="tag client">// INOBAL</span>
+        <span class="tag">Remote staffing offer</span>
+        <span class="tag">2025 → Present</span>
+      </div>
+      <h3>Giving a service business a repeatable sales motion</h3>
+      <div class="ledger">
+        <div class="problem">
+          <span class="side-label">THE PROBLEM</span>
+          <p>Every pitch was improvised. No scripts, no consistent positioning, no materials to leave behind. Deals depended entirely on who happened to be in the room and how good their day was.</p>
+        </div>
+        <div class="solved">
+          <span class="side-label">WHAT I DID</span>
+          <ul class="did">
+            <li>Wrote sales scripts and call frameworks for the remote staffing offer, from opener to objection handling to close</li>
+            <li>Produced pitch materials and one-pagers so every conversation ends with something concrete in the prospect's hands</li>
+            <li>Positioned the offer around the buyer's actual pain, hiring cost and speed, rather than a feature list</li>
+          </ul>
+          <span class="side-label result-label">THE RESULT</span>
+          <div class="mgrid">
+            <div class="metric"><span class="m-val">1</span><span class="m-delta up">sales motion</span><span class="m-label">repeatable from first call to close</span></div>
+            <div class="metric"><span class="m-val">Every rep</span><span class="m-delta up">same story</span><span class="m-label">consistent positioning across the team</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="minis reveal">
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>A premium product sold on a call</h4>
+        <p>A luxury business magazine's flagship edition needed collateral worthy of its price point.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Built the sales collateral for WorthMinds' Orbit Edition: positioning, pitch copy and premium-format materials matching the black and gold brand world.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>A book nobody could sample</h4>
+        <p>Interest in the book, but no low-friction way to taste it before buying.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Curated a 5-page book preview PDF with a purchase CTA page, a sales asset that lets the writing do the selling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 BIZ DEV ================= -->
+<section class="block" id="bizdev">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-idx">SECTION 05</span><h2>Business Development</h2></div>
+    <p class="sec-dek reveal">Pipeline you can point to: lead infrastructure, outreach systems and the SOPs that make growth repeatable.</p>
+
+    <article class="case reveal">
+      <div class="case-top">
+        <span class="tag client">// INOBAL + WORTHMINDS</span>
+        <span class="tag">Apollo · Hunter · Sales Navigator</span>
+        <span class="tag">2024 → Present</span>
+      </div>
+      <h3>Turning outreach from luck into infrastructure</h3>
+      <div class="ledger">
+        <div class="problem">
+          <span class="side-label">THE PROBLEM</span>
+          <p>Growth depended on ad hoc outreach with no system behind it. No qualified lists, no tracking, no way to know what had been tried, and onboarding new clients was reinvented from scratch every time.</p>
+        </div>
+        <div class="solved">
+          <span class="side-label">WHAT I DID</span>
+          <ul class="did">
+            <li>Built lead generation infrastructure on Apollo.io, Hunter.io and LinkedIn Sales Navigator, including boolean search strings and structured Excel trackers</li>
+            <li>Researched and qualified vertical lists: US remote-hiring firms, UK regional investment contacts, coaching professionals and European founder segments</li>
+            <li>Wrote two full SOPs for a premium magazine's client outreach, onboarding and platform operations, turning a founder-dependent process into a documented system</li>
+            <li>Ran international outreach across the Netherlands, France and the UK for editorial and partnership pipelines</li>
+          </ul>
+          <span class="side-label result-label">THE RESULT</span>
+          <div class="mgrid">
+            <div class="metric"><span class="m-val">2</span><span class="m-delta up">full SOPs</span><span class="m-label">outreach + onboarding, documented end to end</span></div>
+            <div class="metric"><span class="m-val">5+</span><span class="m-delta up">qualified verticals</span><span class="m-label">researched, listed and tracked</span></div>
+            <div class="metric"><span class="m-val">6</span><span class="m-delta up">countries</span><span class="m-label">outreach run across markets</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="minis reveal">
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>A heritage brand aging with its audience</h4>
+        <p>Blenheim Palace's prestige wasn't translating to younger, culturally engaged visitors.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Developed a full repositioning strategy: audience segmentation, positioning framework and channel recommendations. MSc project, graded Distinction.</p>
+      </div>
+      <div class="mini">
+        <span class="pv red">PROBLEM</span>
+        <h4>Earlier chapters, same pattern</h4>
+        <p>Food, confectionery and event brands needing consistent presence and engagement.</p>
+        <div class="split"></div>
+        <span class="pv green">SOLVED</span>
+        <p>Branding and social for Theobroma and Vipul Dudhiya Sweets, event campaigns for FunAsia with engagement up 20% and attendance up 30%, and social management for wedding event companies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickertrack">
+    <div class="ticker-set">
+      <span class="tk">Google Ads</span><span class="tk">Meta Ads</span><span class="tk">GA4</span><span class="tk">GTM</span><span class="tk">Power BI</span><span class="tk">n8n</span><span class="tk">HubSpot</span><span class="tk">Mailchimp</span><span class="tk">Brevo</span><span class="tk">Saleshandy</span><span class="tk">Apollo</span><span class="tk">Hunter</span><span class="tk">SEMrush</span><span class="tk">Canva</span><span class="tk">ElevenLabs</span><span class="tk">Higgsfield</span><span class="tk">HeyGen</span><span class="tk">CapCut</span><span class="tk">Claude</span><span class="tk">ChatGPT</span><span class="tk">Gemini</span><span class="tk">Gamma</span>
+    </div>
   </div>
 </div>
 
-<main>
-
-  <div class="sh">
-    <span class="sh-num">01</span>
-    <div class="sh-line"></div>
-    <h2>Selected Projects</h2>
-  </div>
-
-  <div class="projects">
-
-    <div class="pcard">
-      <div class="pcard-inner">
-        <div class="pcard-sidebar">
-          <span class="pcard-idx">01</span>
-          <div class="pcard-bar"></div>
+<!-- ================= EDUCATION / CERTS ================= -->
+<section class="block" id="credentials">
+  <div class="wrap">
+    <div class="twocol">
+      <div>
+        <div class="sec-head reveal"><span class="sec-idx">EDUCATION</span></div>
+        <div class="rowitem reveal">
+          <div><strong>MSc Marketing and Brand Management</strong><span>Oxford Brookes University · Graduated with Distinction</span></div>
+          <span class="yr">2024</span>
         </div>
-        <div class="pcard-body">
-          <div class="pcard-meta">
-            <span class="tag tag-gold">Performance Marketing</span>
-            <span class="tag tag-dim">Paid Media</span>
-            <span class="tag tag-dim">Email Automation</span>
-            <span class="pcard-date">2026 / Present</span>
-          </div>
-          <div class="pcard-title">Multi-Market Paid Media Management</div>
-          <div class="pcard-org">// INOBAL</div>
-          <p class="pcard-desc">Managing end-to-end paid campaigns across Google Ads and Meta for clients in the UK, US, Finland, and Dubai, covering lead generation, ROAS optimisation, and ongoing stakeholder reporting.</p>
-          <ul class="pcard-points">
-            <li>Built GA4 and Power BI dashboards to surface actionable performance insights for client stakeholders</li>
-            <li>Set up email automation flows in Mailchimp, Brevo, and Saleshandy, including HTML templates, list segmentation, and nurture sequences</li>
-            <li>Integrated AI tools and built n8n automation workflows to reduce manual workload across accounts</li>
-            <li>Managed CRM systems and client communications across multiple sectors simultaneously</li>
-          </ul>
-          <div class="pcard-bottom">
-            <div class="chips">
-              <span class="chip">Google Ads</span>
-              <span class="chip">Meta Ads</span>
-              <span class="chip">GA4</span>
-              <span class="chip">Power BI</span>
-              <span class="chip">Mailchimp</span>
-              <span class="chip">Brevo</span>
-              <span class="chip">n8n</span>
-              <span class="chip">HubSpot</span>
-            </div>
-            <div class="pcard-results">
-              <div class="res"><span class="res-n">UK · US · FI · UAE</span><span class="res-l">Markets</span></div>
-              <div class="res"><span class="res-n">Multi-channel</span><span class="res-l">PPC + Email + CRM</span></div>
-            </div>
-          </div>
+        <div class="rowitem reveal">
+          <div><strong>BBA, Business Administration</strong><span>Nirma University, India · CGPA 8.5 / 10</span></div>
+          <span class="yr">2022</span>
         </div>
       </div>
-    </div>
-
-    <div class="pcard">
-      <div class="pcard-inner">
-        <div class="pcard-sidebar">
-          <span class="pcard-idx">02</span>
-          <div class="pcard-bar"></div>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-meta">
-            <span class="tag tag-gold">Digital Marketing</span>
-            <span class="tag tag-dim">Performance Marketing</span>
-            <span class="tag tag-dim">Podcast Production</span>
-            <span class="pcard-date">2025 / Present</span>
-          </div>
-          <div class="pcard-title">Digital Marketing and Performance Marketing</div>
-          <div class="pcard-org">// Jani Havunen, Author</div>
-          <p class="pcard-desc">Working with Finnish author Jani Havunen on complete digital and performance marketing for his book <em>Shit: Life to Self Made</em>, including audience growth, paid promotion, content distribution, and podcast production across streaming platforms.</p>
-          <ul class="pcard-points">
-            <li>Handled digital and performance marketing strategy and execution</li>
-            <li>Produced podcast-style audio content using ElevenLabs, distributed on Spotify and Amazon Music</li>
-            <li>Managed content planning and social distribution to support ongoing visibility</li>
-          </ul>
-          <div class="pcard-bottom">
-            <div class="chips">
-              <span class="chip">Digital Marketing</span>
-              <span class="chip">Performance Marketing</span>
-              <span class="chip">ElevenLabs</span>
-              <span class="chip">Spotify</span>
-              <span class="chip">Amazon Music</span>
-              <span class="chip">Content Strategy</span>
-            </div>
-            <div class="pcard-results">
-              <div class="res"><span class="res-n">Spotify + Amazon</span><span class="res-l">Distribution</span></div>
-              <div class="res"><span class="res-n">AI-produced</span><span class="res-l">Podcast content</span></div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <div class="sec-head reveal"><span class="sec-idx">CERTIFICATIONS</span></div>
+        <div class="rowitem reveal"><div><strong>Google Analytics 4</strong><span>Google Skillshop</span></div><span class="yr">2026</span></div>
+        <div class="rowitem reveal"><div><strong>Google Ads</strong><span>SimpliLearn</span></div><span class="yr">2026</span></div>
+        <div class="rowitem reveal"><div><strong>AI Marketing</strong><span>SEMrush</span></div><span class="yr">2026</span></div>
+        <div class="rowitem reveal"><div><strong>Data Analysis with Excel</strong><span>Microsoft</span></div><span class="yr">2026</span></div>
+        <div class="rowitem reveal"><div><strong>AI Skills Certification</strong><span>Be10x</span></div><span class="yr">2026</span></div>
+        <div class="rowitem reveal"><div><strong>Email Marketing</strong><span>HubSpot</span></div><span class="yr">2023</span></div>
+        <div class="rowitem reveal"><div><strong>Social Media Marketing</strong><span>Hootsuite</span></div><span class="yr">2023</span></div>
+        <div class="rowitem reveal"><div><strong>Digital Marketing Fundamentals</strong><span>Google</span></div><span class="yr">2022</span></div>
       </div>
     </div>
-
-    <div class="pcard">
-      <div class="pcard-inner">
-        <div class="pcard-sidebar">
-          <span class="pcard-idx">03</span>
-          <div class="pcard-bar"></div>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-meta">
-            <span class="tag tag-gold">Brand Strategy</span>
-            <span class="tag tag-dim">Audience Research</span>
-            <span class="pcard-date">2024</span>
-          </div>
-          <div class="pcard-title">Blenheim Palace Heritage Rebranding</div>
-          <div class="pcard-org">// Oxford Brookes University</div>
-          <p class="pcard-desc">Developed a modernised brand strategy for one of the UK's most recognised heritage venues, balancing institutional prestige with contemporary audience relevance.</p>
-          <ul class="pcard-points">
-            <li>Conducted audience segmentation to identify underserved visitor demographics and reposition accordingly</li>
-            <li>Developed positioning framework and audience targeting recommendations to attract a younger, culturally engaged demographic</li>
-            <li>Delivered integrated strategy covering brand narrative, channel mix, and campaign activation recommendations</li>
-          </ul>
-          <div class="pcard-bottom">
-            <div class="chips">
-              <span class="chip">Brand Strategy</span>
-              <span class="chip">Audience Segmentation</span>
-              <span class="chip">Positioning</span>
-              <span class="chip">Heritage Marketing</span>
-            </div>
-            <div class="pcard-results">
-              <div class="res"><span class="res-n">MSc Distinction</span><span class="res-l">Academic project</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pcard">
-      <div class="pcard-inner">
-        <div class="pcard-sidebar">
-          <span class="pcard-idx">04</span>
-          <div class="pcard-bar"></div>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-meta">
-            <span class="tag tag-gold">Integrated Campaign</span>
-            <span class="tag tag-dim">Paid Social</span>
-            <span class="pcard-date">2024</span>
-          </div>
-          <div class="pcard-title">Regional UK Multi-Channel Campaign</div>
-          <div class="pcard-org">// Royce Lingerie</div>
-          <p class="pcard-desc">Planned and executed an integrated marketing campaign across digital and social channels targeting a regional UK consumer audience for an established lingerie brand.</p>
-          <ul class="pcard-points">
-            <li>Developed campaign strategy covering channel selection, content approach, and audience targeting</li>
-            <li>Produced creative briefs and coordinated execution across digital and social touchpoints</li>
-          </ul>
-          <div class="pcard-bottom">
-            <div class="chips">
-              <span class="chip">Campaign Strategy</span>
-              <span class="chip">Paid Social</span>
-              <span class="chip">Content Planning</span>
-              <span class="chip">Consumer Marketing</span>
-            </div>
-            <div class="pcard-results">
-              <div class="res"><span class="res-n">Regional UK</span><span class="res-l">Market focus</span></div>
-              <div class="res"><span class="res-n">Multi-channel</span><span class="res-l">Digital + Social</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pcard">
-      <div class="pcard-inner">
-        <div class="pcard-sidebar">
-          <span class="pcard-idx">05</span>
-          <div class="pcard-bar"></div>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-meta">
-            <span class="tag tag-gold">SEO and Content Strategy</span>
-            <span class="tag tag-dim">Editorial</span>
-            <span class="pcard-date">2020 / 2022</span>
-          </div>
-          <div class="pcard-title">Organic Growth and Editorial Strategy</div>
-          <div class="pcard-org">// DhruVats</div>
-          <p class="pcard-desc">Led end-to-end content strategy and SEO for a growing digital brand over two years, building publishing systems, optimising on-site performance, and improving funnel conversion.</p>
-          <ul class="pcard-points">
-            <li>Built and managed content calendars aligned to product goals and audience search behaviour</li>
-            <li>Executed keyword research and on-page SEO to grow organic discovery across key pages</li>
-            <li>Refined distribution approach using analytics data to reduce bounce rates and lift conversions</li>
-          </ul>
-          <div class="pcard-bottom">
-            <div class="chips">
-              <span class="chip">SEO</span>
-              <span class="chip">Content Calendar</span>
-              <span class="chip">Analytics</span>
-              <span class="chip">Copywriting</span>
-            </div>
-            <div class="pcard-results">
-              <div class="res"><span class="res-n">+20%</span><span class="res-l">Organic traffic</span></div>
-              <div class="res"><span class="res-n">+25%</span><span class="res-l">Conversions</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pcard">
-      <div class="pcard-inner">
-        <div class="pcard-sidebar">
-          <span class="pcard-idx">06</span>
-          <div class="pcard-bar"></div>
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-meta">
-            <span class="tag tag-gold">Event Marketing</span>
-            <span class="tag tag-dim">Content</span>
-            <span class="pcard-date">2022</span>
-          </div>
-          <div class="pcard-title">Promotional Content and Event Campaigns</div>
-          <div class="pcard-org">// FunAsia</div>
-          <p class="pcard-desc">Created promotional content and developed structured content calendars for an event-led entertainment brand, driving measurable increases in audience engagement and live attendance.</p>
-          <ul class="pcard-points">
-            <li>Wrote campaign copy and content across digital channels aligned to event schedules</li>
-            <li>Developed content planning systems to ensure consistent output around event cycles</li>
-          </ul>
-          <div class="pcard-bottom">
-            <div class="chips">
-              <span class="chip">Copywriting</span>
-              <span class="chip">Content Calendars</span>
-              <span class="chip">Event Marketing</span>
-              <span class="chip">Social Media</span>
-            </div>
-            <div class="pcard-results">
-              <div class="res"><span class="res-n">+20%</span><span class="res-l">Engagement</span></div>
-              <div class="res"><span class="res-n">+30%</span><span class="res-l">Attendance</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
+</section>
 
-  <div class="sh">
-    <span class="sh-num">02</span>
-    <div class="sh-line"></div>
-    <h2>Additional Work</h2>
-  </div>
-
-  <div class="addl">
-    <div class="addl-note">// Earlier-stage work across branding, social media, and content for clients in food and events</div>
-    <div class="addl-item">
-      <div class="addl-lc"><span class="addl-label">Branding + Social</span></div>
-      <div class="addl-text">Handled branding and social media for <strong>Theobroma</strong> and <strong>Vipul Dudhiya Sweets</strong>, two well-known food and confectionery brands in India, covering content creation and channel management.</div>
-    </div>
-    <div class="addl-item">
-      <div class="addl-lc"><span class="addl-label">Social Media</span></div>
-      <div class="addl-text">Managed social media accounts for <strong>wedding event companies</strong>, handling content planning and community engagement across platforms.</div>
-    </div>
-  </div>
-
-  <div class="sh">
-    <span class="sh-num">03</span>
-    <div class="sh-line"></div>
-    <h2>Tools and Platforms</h2>
-  </div>
-
-  <div class="tools">
-    <div class="tool hot">Google Ads</div>
-    <div class="tool hot">Meta Ads</div>
-    <div class="tool hot">GA4</div>
-    <div class="tool hot">Power BI</div>
-    <div class="tool hot">n8n</div>
-    <div class="tool hot">ElevenLabs</div>
-    <div class="tool">SEMrush</div>
-    <div class="tool">HubSpot</div>
-    <div class="tool">Mailchimp</div>
-    <div class="tool">Brevo</div>
-    <div class="tool">Saleshandy</div>
-    <div class="tool">Canva</div>
-    <div class="tool">ChatGPT</div>
-    <div class="tool">Claude</div>
-    <div class="tool">Gemini</div>
-    <div class="tool">HeyGen</div>
-    <div class="tool">Higgsfield</div>
-    <div class="tool">Gamma</div>
-  </div>
-
-  <div class="sh">
-    <span class="sh-num">04</span>
-    <div class="sh-line"></div>
-    <h2>Education</h2>
-  </div>
-
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-deg">MSc Marketing and Brand Management</div>
-      <div class="edu-school">Oxford Brookes University · Digital Marketing, Consumer Behaviour, Brand Strategy</div>
-      <span class="edu-badge">Graduated with Distinction</span>
-      <div class="edu-year">2024</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-deg">BBA, Bachelor of Business Administration</div>
-      <div class="edu-school">Nirma University, India · Marketing Strategy, International Business</div>
-      <span class="edu-badge">CGPA 8.5 / 10</span>
-      <div class="edu-year">2022</div>
-    </div>
-  </div>
-
-  <div class="sh">
-    <span class="sh-num">05</span>
-    <div class="sh-line"></div>
-    <h2>Certifications</h2>
-  </div>
-
-  <div class="cert-grid">
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">Google Analytics 4</div><div class="cert-iss">Google Skillshop · 2026</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">Google Ads</div><div class="cert-iss">SimpliLearn · 2026</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">AI Marketing</div><div class="cert-iss">SEMrush · 2026</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">Data Analysis with Excel</div><div class="cert-iss">Microsoft · 2026</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">AI Skills Certification</div><div class="cert-iss">Be10x · 2026</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">Email Marketing</div><div class="cert-iss">HubSpot · 2023</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">Social Media Marketing</div><div class="cert-iss">Hootsuite · 2023</div></div></div>
-    <div class="cert"><div class="cert-dot"></div><div><div class="cert-name">Digital Marketing Fundamentals</div><div class="cert-iss">Google · 2022</div></div></div>
-  </div>
-
-</main>
-
+<!-- ================= FOOTER ================= -->
 <footer>
-  <div class="footer-logo">HS_</div>
-  <div class="footer-links">
-    <a href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a>
-    <a href="https://linkedin.com/in/hetavi-shah-0901a21b3">LinkedIn</a>
-    <a href="https://hetavishah.lovable.app">Website</a>
+  <div class="wrap">
+    <h2 class="reveal">Have a flat page?<br>Let's turn it <em>green</em>.</h2>
+    <div class="fmeta reveal">
+      <a class="btn solid" href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/hetavi-shah-0901a21b3" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://hetavishah.lovable.app" target="_blank" rel="noopener">hetavishah.lovable.app</a>
+    </div>
+    <div class="foot-note">
+      <span>HETAVI SHAH · GROWTH &amp; MARKETING OPERATIONS</span>
+      <span>ALL METRICS FROM PLATFORM ANALYTICS · 2026</span>
+    </div>
   </div>
 </footer>
 
+<script>
+(function(){
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* hero flip */
+  window.addEventListener('load', function(){
+    document.querySelector('.hero').classList.add('loaded');
+  });
+
+  /* duplicate ticker for seamless loop */
+  var track = document.getElementById('tickertrack');
+  if(track){ track.innerHTML += track.innerHTML; }
+
+  /* build 45-dot grid: 15 igp, 16 igs, 8 fbp, 6 fbs */
+  var grid = document.getElementById('dotgrid');
+  if(grid){
+    var types = [];
+    for(var a=0;a<15;a++) types.push('igp');
+    for(var b=0;b<16;b++) types.push('igs');
+    for(var c=0;c<8;c++) types.push('fbp');
+    for(var d=0;d<6;d++) types.push('fbs');
+    types.forEach(function(t,i){
+      var el = document.createElement('span');
+      el.className = 'dot ' + t;
+      el.style.animationDelay = (i*35) + 'ms';
+      grid.appendChild(el);
+    });
+  }
+
+  /* count up */
+  function countUp(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var dec = parseInt(el.getAttribute('data-dec')||'0',10);
+    var suffix = el.getAttribute('data-suffix')||'';
+    var prefix = el.getAttribute('data-prefix')||'';
+    var comma = el.getAttribute('data-comma');
+    var dur = 1400, start = null;
+    function fmt(v){
+      var s = comma ? Math.round(v).toLocaleString('en-US') : v.toFixed(dec);
+      return prefix + s + suffix;
+    }
+    if(prefersReduced){ el.textContent = fmt(target); return; }
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur,1);
+      var eased = 1 - Math.pow(1-p,3);
+      el.textContent = fmt(target*eased);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* sparkline draw */
+  function drawSpark(path){
+    var len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = prefersReduced ? 0 : len;
+    if(!prefersReduced){
+      path.getBoundingClientRect();
+      path.style.transition = 'stroke-dashoffset 1.3s ease .15s';
+      path.style.strokeDashoffset = 0;
+    }
+  }
+
+  /* observers */
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting || seen.has(en.target)) return;
+      seen.add(en.target);
+      var t = en.target;
+      if(t.classList.contains('reveal')) t.classList.add('on');
+      if(t.classList.contains('metric')){
+        var v = t.querySelector('[data-count]');
+        if(v) countUp(v);
+        var s = t.querySelector('[data-spark]');
+        if(s) drawSpark(s);
+      }
+      if(t.id === 'dotgrid') t.classList.add('on');
+    });
+  },{threshold:.25});
+
+  document.querySelectorAll('.reveal,.metric,#dotgrid').forEach(function(el){ io.observe(el); });
+
+  /* nav active + progress */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.navlink'));
+  var secs = links.map(function(l){ return document.querySelector(l.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 120;
+    var active = 0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= y) active = i; });
+    links.forEach(function(l,i){ l.classList.toggle('active', i===active); });
+    var h = document.documentElement;
+    var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
