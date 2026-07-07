@@ -1,176 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hetavi Shah | Growth & Marketing Operations</title>
 <meta name="description" content="Portfolio of Hetavi Shah. Social media, performance marketing, email & CRM, sales and business development. Problem in, result out.">
+<meta name="theme-color" content="#0C1F24">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232BD98A'>▲</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F4F6F2;
-  --ink:#0E1F17;
-  --ink-soft:rgba(14,31,23,.66);
-  --line:rgba(14,31,23,.14);
-  --card:#FFFFFF;
-  --green:#0E8A4F;
-  --green-wash:#DFF0E6;
-  --green-deep:#0A6B3D;
-  --red:#D64541;
-  --red-wash:#FAE6E4;
+  --bg:#0C1F24;
+  --bg-2:#0E252B;
+  --card:#11292F;
+  --card-2:#143036;
+  --ink:#E8F1F0;
+  --ink-soft:rgba(232,241,240,.6);
+  --line:rgba(43,217,138,.18);
+  --line-soft:rgba(232,241,240,.1);
+  --green:#2BD98A;
+  --green-deep:#1DB471;
+  --green-wash:rgba(43,217,138,.1);
+  --red:#FF5E57;
+  --red-wash:rgba(255,94,87,.09);
+  --amber:#FFC24B;
+  --glow:rgba(43,217,138,.13);
+  --grid-line:rgba(43,217,138,.05);
   --mono:'IBM Plex Mono',ui-monospace,monospace;
   --sans:'Instrument Sans',system-ui,sans-serif;
   --disp:'Bricolage Grotesque',var(--sans);
   --maxw:1180px;
   --pad:clamp(20px,4vw,56px);
 }
+html[data-theme="light"]{
+  --bg:#EDF3EF;
+  --bg-2:#E4ECE7;
+  --card:#FFFFFF;
+  --card-2:#F8FBF9;
+  --ink:#0E241F;
+  --ink-soft:rgba(14,36,31,.62);
+  --line:rgba(14,138,79,.25);
+  --line-soft:rgba(14,36,31,.13);
+  --green:#0E8A4F;
+  --green-deep:#0A6B3D;
+  --green-wash:rgba(14,138,79,.09);
+  --red:#D64541;
+  --red-wash:rgba(214,69,65,.08);
+  --glow:rgba(14,138,79,.1);
+  --grid-line:rgba(14,36,31,.05);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  background:var(--paper);
+  background:var(--bg);
   color:var(--ink);
   font-family:var(--sans);
-  font-size:17px;
-  line-height:1.6;
+  font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
 }
-::selection{background:var(--green);color:#fff}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:
+    linear-gradient(var(--grid-line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 10% -8%,var(--glow),transparent 60%),
+    radial-gradient(760px 460px at 102% 112%,var(--glow),transparent 65%),
+    linear-gradient(160deg,rgba(43,217,138,.04),transparent 40%);
+}
+#bgchart{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.45;pointer-events:none}
+::selection{background:var(--green);color:#05201A}
 a{color:inherit}
-img{max-width:100%;display:block}
-.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 .mono{font-family:var(--mono)}
+noscript .reveal{opacity:1 !important;transform:none !important}
+
+/* ---------- custom cursor ---------- */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor-dot{width:6px;height:6px;background:var(--green)}
+.cursor-ring{width:34px;height:34px;border:1.5px solid var(--green);opacity:.55;transition:width .2s,height .2s,opacity .2s}
+body.cursor-hover .cursor-ring{width:54px;height:54px;opacity:.9}
+@media (pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+body.has-cursor{cursor:none}
+body.has-cursor a,body.has-cursor button,body.has-cursor .mailrow{cursor:none}
+
+/* ---------- scroll rail (climbing arrow) ---------- */
+.rail{
+  position:fixed;top:0;right:10px;height:100vh;width:74px;z-index:40;pointer-events:none;
+}
+.rail svg{width:100%;height:100%;overflow:visible}
+.rail .rail-bg{fill:none;stroke:var(--line-soft);stroke-width:2;stroke-linecap:round}
+.rail .rail-fill{fill:none;stroke:var(--green);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 6px var(--green-wash))}
+.rail .arrow{fill:var(--green)}
+.rail .pct{font-family:var(--mono);font-size:11px;font-weight:600;fill:var(--ink);text-anchor:end}
+@media(max-width:960px){.rail{display:none}}
 
 /* ---------- nav ---------- */
 .nav{
   position:sticky;top:0;z-index:50;
-  background:rgba(244,246,242,.9);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--bg) 84%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-soft);
 }
-.nav-in{
-  max-width:var(--maxw);margin:0 auto;
-  padding:0 var(--pad);
-  display:flex;align-items:center;gap:18px;
-  height:58px;
-}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;gap:14px;height:58px}
 .brand{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.06em;text-decoration:none;white-space:nowrap}
 .brand b{color:var(--green)}
 .navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
 .navlinks::-webkit-scrollbar{display:none}
 .navlink{
-  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
-  text-decoration:none;color:var(--ink-soft);
-  padding:7px 11px;border-radius:999px;white-space:nowrap;
-  border:1px solid transparent;
-  transition:color .2s,border-color .2s,background .2s;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-decoration:none;
+  color:var(--ink-soft);padding:7px 11px;border-radius:999px;white-space:nowrap;
+  border:1px solid transparent;transition:color .2s,border-color .2s,background .2s;
 }
 .navlink:hover{color:var(--ink)}
-.navlink.active{color:var(--ink);border-color:var(--line);background:#fff}
+.navlink.active{color:var(--ink);border-color:var(--line);background:var(--card)}
 .navlink .idx{color:var(--green);margin-right:5px}
+.nav-tools{display:flex;align-items:center;gap:8px}
+.tool-btn{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+  background:var(--card);border:1px solid var(--line-soft);color:var(--ink-soft);
+  border-radius:8px;padding:6px 10px;display:inline-flex;align-items:center;gap:6px;
+  transition:all .2s;white-space:nowrap;
+}
+.tool-btn:hover{color:var(--ink);border-color:var(--green)}
+.tool-btn kbd{font-family:var(--mono);font-size:10px;background:var(--bg-2);border:1px solid var(--line-soft);border-radius:4px;padding:1px 5px}
+.clock{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);letter-spacing:.05em;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.clock i{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(43,217,138,.4)}50%{box-shadow:0 0 0 6px rgba(43,217,138,0)}}
 .progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--green);width:0%}
+@media(max-width:900px){.clock{display:none}}
+@media(max-width:640px){.tool-btn .lbl{display:none}}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(64px,10vh,120px) 0 clamp(48px,7vh,88px);border-bottom:1px solid var(--line)}
-.hero .eyebrow{
-  font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;
-  color:var(--ink-soft);display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+.hero{padding:clamp(60px,9vh,110px) 0 clamp(46px,7vh,84px);border-bottom:1px solid var(--line-soft);position:relative}
+.terminal{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+  background:var(--card);border:1px solid var(--line-soft);border-radius:10px;
+  padding:12px 16px;display:inline-flex;gap:10px;align-items:center;max-width:100%;color:var(--ink-soft);
 }
-.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(14,138,79,.35)}50%{box-shadow:0 0 0 7px rgba(14,138,79,0)}}
+.terminal .prompt{color:var(--green)}
+.terminal .typed{color:var(--ink);min-height:1em;white-space:nowrap;overflow:hidden}
+.caret{display:inline-block;width:8px;height:14px;background:var(--green);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
 .hero h1{
   font-family:var(--disp);font-weight:800;
-  font-size:clamp(38px,6.4vw,78px);
-  line-height:1.02;letter-spacing:-.02em;
-  margin:26px 0 10px;max-width:24ch;
+  font-size:clamp(38px,6.4vw,78px);line-height:1.02;letter-spacing:-.02em;
+  margin:28px 0 10px;max-width:24ch;
 }
 .hero h1 .flat{color:var(--red)}
 .hero h1 .green{color:var(--green)}
-.flipchips{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:26px 0 34px}
+.flipchips{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:26px 0 32px}
 .chip{
   font-family:var(--mono);font-size:clamp(13px,1.7vw,16px);font-weight:600;
-  padding:10px 16px;border-radius:10px;border:1px solid var(--line);
-  background:#fff;position:relative;white-space:nowrap;
+  padding:10px 16px;border-radius:10px;border:1px solid var(--line-soft);
+  background:var(--card);position:relative;white-space:nowrap;
 }
 .chip small{display:block;font-weight:400;font-size:11px;color:var(--ink-soft);letter-spacing:.03em;margin-top:2px}
-.chip.red{color:var(--red);border-color:rgba(214,69,65,.35);background:var(--red-wash)}
+.chip.red{color:var(--red);border-color:rgba(255,94,87,.35);background:var(--red-wash)}
 .chip.red::after{
   content:"";position:absolute;left:8%;right:8%;top:34%;height:2px;background:var(--red);
   transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.7,0,.3,1) .9s;
 }
-.chip.green{color:var(--green-deep);border-color:rgba(14,138,79,.35);background:var(--green-wash);
+.chip.green{color:var(--green);border-color:rgba(43,217,138,.4);background:var(--green-wash);
   opacity:0;transform:translateY(8px);transition:opacity .5s ease 1.5s,transform .5s ease 1.5s}
 .hero.loaded .chip.red::after{transform:scaleX(1)}
 .hero.loaded .chip.green{opacity:1;transform:none}
 .flip-arrow{font-family:var(--mono);color:var(--ink-soft);font-size:18px}
 .hero .sub{max-width:62ch;color:var(--ink-soft);font-size:clamp(16px,1.9vw,18.5px)}
 .hero-meta{
-  margin-top:40px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  margin-top:38px;display:flex;flex-wrap:wrap;gap:10px 26px;
   font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.03em;
-  border-top:1px dashed var(--line);padding-top:22px;
+  border-top:1px dashed var(--line-soft);padding-top:22px;align-items:center;
 }
 .hero-meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--green)}
-.hero-meta a:hover{color:var(--green-deep)}
+.hero-meta a:hover{color:var(--green)}
+.hint{font-family:var(--mono);font-size:11px;color:var(--ink-soft);display:inline-flex;gap:6px;align-items:center;margin-left:auto}
+.hint kbd{font-size:10px;background:var(--card);border:1px solid var(--line-soft);border-radius:4px;padding:1px 6px}
+@media(max-width:760px){.hint{display:none}}
 
 /* ---------- sections ---------- */
-section.block{padding:clamp(56px,9vh,110px) 0;border-bottom:1px solid var(--line)}
-.sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+section.block{padding:clamp(56px,9vh,110px) 0;border-bottom:1px solid var(--line-soft);position:relative}
+section.block::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(720px 320px at 20% 0%,var(--sec-glow,transparent),transparent 70%);
+}
+#social{--sec-glow:rgba(238,42,123,.07)}
+#performance{--sec-glow:rgba(86,156,255,.07)}
+#email{--sec-glow:rgba(255,194,75,.06)}
+#sales{--sec-glow:rgba(43,217,138,.09)}
+#bizdev{--sec-glow:rgba(168,124,255,.07)}
+.sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:14px;position:relative}
 .sec-idx{font-family:var(--mono);font-size:13px;color:var(--green);letter-spacing:.1em}
 .sec-head h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.4vw,52px);letter-spacing:-.015em;line-height:1.05}
-.sec-dek{color:var(--ink-soft);max-width:64ch;margin-bottom:44px}
+.sec-dek{color:var(--ink-soft);max-width:64ch;margin-bottom:44px;position:relative}
 
-/* ---------- case ledger ---------- */
-.case{
-  background:var(--card);border:1px solid var(--line);border-radius:18px;
-  padding:clamp(22px,3.4vw,40px);margin-bottom:28px;
-  transition:transform .25s ease,box-shadow .25s ease;
-}
-.case:hover{transform:translateY(-3px);box-shadow:0 18px 44px -22px rgba(14,31,23,.28)}
-.case-top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px}
-.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft)}
-.tag.client{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.case h3{font-family:var(--disp);font-weight:600;font-size:clamp(21px,2.6vw,29px);letter-spacing:-.01em;margin-bottom:22px;max-width:30ch}
-.ledger{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,40px)}
-@media(max-width:820px){.ledger{grid-template-columns:1fr}}
-.side-label{
-  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;
-  display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;
-}
+/* ---------- shared case bits ---------- */
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;padding:4px 10px;border:1px solid var(--line-soft);border-radius:999px;color:var(--ink-soft)}
+.tag.client{background:var(--green);color:#05201A;border-color:var(--green);font-weight:600}
+.side-label{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;display:inline-flex;align-items:center;gap:8px;margin-bottom:14px}
 .side-label::before{content:"";width:22px;height:3px;border-radius:2px}
 .problem .side-label{color:var(--red)} .problem .side-label::before{background:var(--red)}
-.solved .side-label{color:var(--green-deep)} .solved .side-label::before{background:var(--green)}
+.solved .side-label{color:var(--green)} .solved .side-label::before{background:var(--green)}
 .problem p,.solved p{color:var(--ink-soft);font-size:15.5px}
 .did{margin:0 0 20px;padding:0;list-style:none}
 .did li{position:relative;padding-left:22px;margin-bottom:9px;font-size:15.5px;color:var(--ink)}
 .did li::before{content:"→";position:absolute;left:0;color:var(--green);font-family:var(--mono);font-size:13px;top:2px}
 .before-stats{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .bstat{
-  font-family:var(--mono);font-size:13px;
-  background:var(--red-wash);border:1px solid rgba(214,69,65,.28);
-  border-radius:10px;padding:10px 14px;color:var(--ink);
+  font-family:var(--mono);font-size:13px;background:var(--red-wash);
+  border:1px solid rgba(255,94,87,.28);border-radius:10px;padding:10px 14px;color:var(--ink);
   display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 }
+html[data-theme="light"] .bstat{border-color:rgba(214,69,65,.3)}
 .bstat .d{color:var(--red);font-weight:600}
 .result-label{margin-top:6px}
-
-/* metric grid */
 .mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.metric{
-  background:var(--paper);border:1px solid var(--line);border-radius:12px;
-  padding:14px 14px 12px;position:relative;overflow:hidden;
-}
+.metric{background:var(--card-2);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px 12px;position:relative;overflow:hidden;transition:border-color .2s}
+.metric:hover{border-color:var(--green)}
 .m-val{font-family:var(--mono);font-weight:600;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.01em;display:block}
 .m-delta{font-family:var(--mono);font-size:12px;font-weight:600;display:inline-block;margin-top:2px}
-.m-delta.up{color:var(--green-deep)}
-.m-delta.down{color:var(--red)}
+.m-delta.up{color:var(--green)}
 .m-label{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.4}
 .spark{position:absolute;right:8px;top:10px;width:64px;height:26px;opacity:.9}
 .spark path{fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .m-src{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:14px;letter-spacing:.03em}
-
-/* dot grid for 45 pieces */
-.dotwrap{margin-top:20px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+.dotwrap{margin-top:20px;background:var(--card-2);border:1px solid var(--line-soft);border-radius:12px;padding:16px}
 .dotgrid{display:grid;grid-template-columns:repeat(15,12px);gap:7px;margin-bottom:12px}
 @media(max-width:480px){.dotgrid{grid-template-columns:repeat(9,12px)}}
 .dot{width:12px;height:12px;border-radius:50%;opacity:0;transform:scale(.3)}
@@ -184,51 +246,260 @@ section.block{padding:clamp(56px,9vh,110px) 0;border-bottom:1px solid var(--line
 .legend span{display:inline-flex;align-items:center;gap:7px}
 .legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
 
-/* small project cards */
-.minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+/* minis */
+.minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px;position:relative}
 .mini{
-  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
-  transition:transform .25s ease,box-shadow .25s ease;
+  background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:22px;
+  position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
 }
-.mini:hover{transform:translateY(-3px);box-shadow:0 14px 34px -20px rgba(14,31,23,.3)}
-.mini h4{font-family:var(--disp);font-weight:600;font-size:18px;margin:10px 0 8px}
-.mini p{font-size:14.5px;color:var(--ink-soft)}
-.mini .pv{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;font-weight:600}
+.mini::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),var(--green-wash),transparent 55%)}
+.mini:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:0 18px 40px -26px rgba(0,0,0,.55)}
+.mini:hover::after{opacity:1}
+.mini h4{font-family:var(--disp);font-weight:600;font-size:18px;margin:10px 0 8px;position:relative;z-index:1}
+.mini p{font-size:14.5px;color:var(--ink-soft);position:relative;z-index:1}
+.mini .pv{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;font-weight:600;position:relative;z-index:1}
 .mini .pv.red{color:var(--red)}
-.mini .pv.green{color:var(--green-deep)}
-.mini .split{border-top:1px dashed var(--line);margin:12px 0;padding-top:12px}
+.mini .pv.green{color:var(--green)}
+.mini .split{border-top:1px dashed var(--line-soft);margin:12px 0;padding-top:12px}
 
-/* ---------- ticker ---------- */
-.ticker{border-bottom:1px solid var(--line);overflow:hidden;background:var(--ink);color:var(--paper)}
-.ticker-track{display:flex;gap:0;width:max-content;animation:scroll 34s linear infinite}
+/* ============ 01 INSTAGRAM THEME ============ */
+.stories{display:flex;gap:18px;overflow-x:auto;padding:4px 2px 18px;scrollbar-width:none;position:relative}
+.stories::-webkit-scrollbar{display:none}
+.story{display:flex;flex-direction:column;align-items:center;gap:7px;flex-shrink:0}
+.story .ring{
+  width:66px;height:66px;border-radius:50%;padding:3px;
+  background:conic-gradient(from 210deg,#f9ce34,#ee2a7b,#6228d7,#f9ce34);
+}
+.story .ring div{
+  width:100%;height:100%;border-radius:50%;background:var(--card);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:600;font-size:12px;color:var(--green);
+  border:3px solid var(--bg);text-align:center;line-height:1.1;padding:4px;
+}
+.story span{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.03em}
+.igpost{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:16px;
+  margin-bottom:28px;overflow:hidden;position:relative;
+  transition:border-color .25s,box-shadow .25s;
+}
+.igpost:hover{border-color:var(--line);box-shadow:0 24px 60px -30px rgba(0,0,0,.6)}
+.ig-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-soft)}
+.ig-avatar{
+  width:40px;height:40px;border-radius:50%;padding:2px;flex-shrink:0;
+  background:conic-gradient(from 210deg,#f9ce34,#ee2a7b,#6228d7,#f9ce34);
+}
+.ig-avatar div{width:100%;height:100%;border-radius:50%;background:var(--card-2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:13px;border:2px solid var(--card)}
+.ig-user b{font-size:14px;display:block;line-height:1.2}
+.ig-user span{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+.ig-dots{margin-left:auto;color:var(--ink-soft);letter-spacing:2px;font-weight:700}
+.ig-media{padding:clamp(16px,2.6vw,26px);background:var(--bg-2);position:relative;user-select:none}
+.heartburst{
+  position:absolute;font-size:64px;color:#ff3040;pointer-events:none;z-index:5;
+  transform:translate(-50%,-50%) scale(.4);opacity:0;
+  animation:heartpop .8s ease forwards;
+}
+@keyframes heartpop{
+  20%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}
+  60%{opacity:1;transform:translate(-50%,-60%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-90%) scale(1)}
+}
+.ig-actions{display:flex;align-items:center;gap:16px;padding:12px 18px 4px}
+.ig-actions svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.8;cursor:pointer;transition:transform .15s,stroke .2s,fill .2s}
+.ig-actions svg:hover{transform:scale(1.12)}
+.ig-actions .save{margin-left:auto}
+.ig-actions svg.liked{stroke:#ff3040;fill:#ff3040;animation:likebeat .35s ease}
+@keyframes likebeat{40%{transform:scale(1.3)}}
+.ig-likes{font-size:14px;font-weight:600;padding:6px 18px 0}
+.ig-likes span{color:var(--green)}
+.ig-caption{padding:8px 18px 6px;font-size:14.5px;color:var(--ink-soft)}
+.ig-caption b{color:var(--ink);margin-right:6px}
+.ig-caption .did{margin-top:12px}
+.ig-time{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);padding:8px 18px 16px;text-transform:uppercase}
+.dbltap-hint{position:absolute;top:10px;right:12px;font-family:var(--mono);font-size:10px;color:var(--ink-soft);letter-spacing:.05em;opacity:.7}
+
+/* ============ 02 ANALYTICS BROWSER THEME ============ */
+.browser{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden;
+  margin-bottom:28px;transition:border-color .25s,box-shadow .25s;
+}
+.browser:hover{border-color:var(--line);box-shadow:0 24px 60px -30px rgba(0,0,0,.6)}
+.b-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line-soft);background:var(--card-2)}
+.b-dots{display:flex;gap:6px}
+.b-dots i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.b-dots i:nth-child(1){background:#FF5E57}
+.b-dots i:nth-child(2){background:#FFC24B}
+.b-dots i:nth-child(3){background:#2BD98A}
+.b-url{
+  font-family:var(--mono);font-size:12px;color:var(--ink-soft);background:var(--bg-2);
+  border:1px solid var(--line-soft);border-radius:8px;padding:6px 12px;flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.b-url b{color:var(--green)}
+.b-range{font-family:var(--mono);font-size:11px;color:var(--ink-soft);border:1px solid var(--line-soft);border-radius:8px;padding:6px 10px;white-space:nowrap}
+.b-body{padding:clamp(18px,3vw,32px)}
+.b-titlebar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:8px}
+.bigchart{width:100%;height:150px;margin:18px 0 26px;display:block}
+.bigchart .area{fill:url(#areaGrad);opacity:.9}
+.bigchart .stroke{fill:none;stroke:var(--green);stroke-width:2.5;stroke-linecap:round}
+.bigchart .axis{stroke:var(--line-soft);stroke-width:1}
+.bigchart text{font-family:var(--mono);font-size:10px;fill:var(--ink-soft)}
+.b-ledger{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,40px)}
+@media(max-width:820px){.b-ledger{grid-template-columns:1fr}}
+
+/* ============ 03 ENVELOPE / INBOX THEME ============ */
+.envwrap{position:relative;margin:70px 0 28px;perspective:900px}
+.env-flap{
+  position:absolute;left:0;right:0;top:-58px;height:60px;z-index:3;
+  background:var(--card-2);border:1px solid var(--line-soft);border-bottom:0;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;transform:rotateX(0deg);
+  transition:transform .9s cubic-bezier(.6,0,.2,1) .2s;
+  backface-visibility:hidden;
+}
+.envwrap.on .env-flap{transform:rotateX(180deg)}
+.letter{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:16px;
+  padding:clamp(22px,3.4vw,40px);position:relative;z-index:2;
+  transform:translateY(26px);opacity:0;
+  transition:transform .8s ease .35s,opacity .8s ease .35s,border-color .25s,box-shadow .25s;
+}
+.envwrap.on .letter{transform:none;opacity:1}
+.letter:hover{border-color:var(--line);box-shadow:0 24px 60px -30px rgba(0,0,0,.6)}
+.stamp{
+  position:absolute;top:18px;right:18px;width:66px;height:78px;
+  border:2px dashed var(--line);border-radius:6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  font-family:var(--mono);color:var(--green);
+}
+.stamp .tri{font-size:26px;line-height:1}
+.stamp small{font-size:8.5px;letter-spacing:.08em;color:var(--ink-soft)}
+.postmark{
+  position:absolute;top:26px;right:96px;width:58px;height:58px;border:1.5px dashed var(--line-soft);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:8px;color:var(--ink-soft);text-align:center;transform:rotate(-12deg);
+}
+.mailmeta{font-family:var(--mono);font-size:12px;color:var(--ink-soft);display:flex;flex-direction:column;gap:4px;margin:6px 0 20px;padding-bottom:16px;border-bottom:1px dashed var(--line-soft);max-width:calc(100% - 180px)}
+.mailmeta b{color:var(--ink);font-weight:500}
+@media(max-width:640px){.stamp,.postmark{display:none}.mailmeta{max-width:100%}}
+.inbox{border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;margin-top:24px;background:var(--card)}
+.inbox-head{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--ink-soft);padding:12px 18px;border-bottom:1px solid var(--line-soft);background:var(--card-2);display:flex;justify-content:space-between}
+.mailrow{border-bottom:1px solid var(--line-soft);cursor:pointer}
+.mailrow:last-child{border-bottom:0}
+.mailrow-line{display:flex;align-items:center;gap:14px;padding:15px 18px;transition:background .2s}
+.mailrow:hover .mailrow-line{background:var(--green-wash)}
+.mailrow .unread{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
+.mailrow .from{font-weight:600;font-size:14px;width:120px;flex-shrink:0}
+.mailrow .subj{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailrow .subj b{font-weight:600}
+.mailrow .subj span{color:var(--ink-soft)}
+.mailrow .when{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-left:auto;flex-shrink:0}
+.mailrow .chev{color:var(--ink-soft);transition:transform .3s;flex-shrink:0}
+.mailrow.open .chev{transform:rotate(90deg)}
+.mailbody{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.mailbody-in{padding:4px 18px 20px 42px;font-size:14.5px;color:var(--ink-soft)}
+.mailbody-in .pv{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;font-weight:600}
+.mailbody-in .pv.red{color:var(--red)}
+.mailbody-in .pv.green{color:var(--green)}
+.mailbody-in .gap{height:10px}
+@media(max-width:640px){.mailrow .from{width:auto}.mailrow .subj{display:none}}
+
+/* ============ 04 PIPELINE BOARD THEME ============ */
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+@media(max-width:860px){.board{grid-template-columns:1fr}}
+.kcol{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.kcol-head{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;display:flex;align-items:center;gap:10px;padding:2px 4px 10px;border-bottom:1px solid var(--line-soft)}
+.kcol-head .cnt{margin-left:auto;font-size:10.5px;border:1px solid var(--line-soft);border-radius:999px;padding:1px 8px;color:var(--ink-soft)}
+.kcol.c-red .kcol-head{color:var(--red)}
+.kcol.c-amber .kcol-head{color:var(--amber)}
+.kcol.c-green .kcol-head{color:var(--green)}
+.kcard{
+  background:var(--card-2);border:1px solid var(--line-soft);border-radius:12px;padding:16px;
+  font-size:14.5px;color:var(--ink-soft);position:relative;
+  transition:transform .2s,border-color .2s;cursor:grab;
+}
+.kcard:hover{transform:translateY(-3px) rotate(.4deg);border-color:var(--line)}
+.kcard::before{content:"⠿";position:absolute;top:10px;right:12px;color:var(--ink-soft);opacity:.4;font-size:12px}
+.kcard b{color:var(--ink);font-weight:600}
+.kcard .metric{margin-top:0;background:transparent;border:0;padding:0}
+.kcard .ktag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;display:inline-block;margin-bottom:8px;padding:2px 8px;border-radius:999px}
+.kcol.c-red .ktag{background:var(--red-wash);color:var(--red)}
+.kcol.c-amber .ktag{background:rgba(255,194,75,.12);color:var(--amber)}
+.kcol.c-green .ktag{background:var(--green-wash);color:var(--green)}
+
+/* ============ 05 NETWORK MAP THEME ============ */
+.netmap{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:16px;
+  padding:10px;margin-bottom:28px;overflow:hidden;
+}
+.netmap svg{width:100%;height:280px;display:block}
+.netmap .link{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:6 7;animation:dashmove 2.6s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-26}}
+.netmap .node{fill:var(--card-2);stroke:var(--line);stroke-width:1.5}
+.netmap .node.hub{fill:var(--green);stroke:var(--green)}
+.netmap text{font-family:var(--mono);font-size:11px;fill:var(--ink-soft)}
+.netmap .hubtext{fill:#05201A;font-weight:700;font-size:12px}
+.netmap .nlabel{fill:var(--ink)}
+.hubpulse{fill:none;stroke:var(--green);stroke-width:1.5;opacity:0;animation:hubwave 2.6s ease-out infinite}
+@keyframes hubwave{0%{r:24;opacity:.7}100%{r:60;opacity:0}}
+.tracker{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;padding:clamp(22px,3.4vw,40px);margin-bottom:28px;position:relative;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.tracker:hover{border-color:var(--line);box-shadow:0 24px 60px -30px rgba(0,0,0,.6)}
+.case-top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:14px}
+.tracker h3,.letter h3,.browser h3{font-family:var(--disp);font-weight:600;font-size:clamp(21px,2.6vw,29px);letter-spacing:-.01em;margin-bottom:22px;max-width:30ch}
+.ledger{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,40px)}
+@media(max-width:820px){.ledger{grid-template-columns:1fr}}
+
+/* ticker */
+.ticker{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);overflow:hidden;background:var(--bg-2)}
+.ticker-track{display:flex;width:max-content;animation:scroll 34s linear infinite}
 .ticker:hover .ticker-track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(-50%)}}
 .ticker-set{display:flex;align-items:center;padding:14px 0}
-.tk{font-family:var(--mono);font-size:13px;letter-spacing:.05em;padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+.tk{font-family:var(--mono);font-size:13px;letter-spacing:.05em;padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:26px;color:var(--ink-soft)}
 .tk::after{content:"▲";color:var(--green);font-size:10px}
 
-/* ---------- edu / certs ---------- */
+/* credentials */
 .twocol{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 @media(max-width:820px){.twocol{grid-template-columns:1fr}}
-.rowitem{border-top:1px solid var(--line);padding:18px 0;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.rowitem{border-top:1px solid var(--line-soft);padding:18px 0;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .rowitem strong{font-family:var(--disp);font-weight:600;font-size:16.5px;display:block}
 .rowitem span{color:var(--ink-soft);font-size:14px}
 .rowitem .yr{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);white-space:nowrap}
 
-/* ---------- footer ---------- */
-footer{background:var(--ink);color:var(--paper);padding:clamp(64px,10vh,120px) 0}
+/* footer */
+footer{background:var(--bg-2);border-top:1px solid var(--line-soft);padding:clamp(64px,10vh,120px) 0}
 footer h2{font-family:var(--disp);font-weight:800;font-size:clamp(34px,5.6vw,66px);letter-spacing:-.02em;line-height:1.05;max-width:14ch}
-footer h2 em{font-style:normal;color:var(--green);position:relative}
+footer h2 em{font-style:normal;color:var(--green)}
 footer .fmeta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
 .btn{
   font-family:var(--mono);font-size:13.5px;letter-spacing:.04em;text-decoration:none;
-  padding:13px 22px;border-radius:999px;border:1px solid rgba(244,246,242,.3);
-  color:var(--paper);transition:all .2s;
+  padding:13px 22px;border-radius:999px;border:1px solid var(--line);
+  color:var(--ink);transition:all .2s;display:inline-block;background:transparent;
 }
-.btn:hover{border-color:var(--green);color:#fff;background:rgba(14,138,79,.25)}
-.btn.solid{background:var(--green);border-color:var(--green);color:#fff}
-.btn.solid:hover{background:var(--green-deep)}
-footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:rgba(244,246,242,.5);letter-spacing:.05em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.btn:hover{border-color:var(--green);color:var(--green)}
+.btn.solid{background:var(--green);border-color:var(--green);color:#05201A;font-weight:600}
+.btn.solid:hover{background:var(--green-deep);color:#05201A}
+footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);letter-spacing:.05em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* palette */
+.palette-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:14vh 20px 20px}
+.palette-backdrop.open{display:flex}
+.palette{width:min(560px,100%);background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);animation:palIn .18s ease}
+@keyframes palIn{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+.palette input{width:100%;background:transparent;border:0;outline:0;color:var(--ink);font-family:var(--mono);font-size:15px;padding:16px 18px;border-bottom:1px solid var(--line-soft)}
+.palette input::placeholder{color:var(--ink-soft)}
+.pal-list{max-height:320px;overflow-y:auto;padding:8px}
+.pal-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:9px;font-size:14.5px;color:var(--ink);user-select:none}
+.pal-item .k{font-family:var(--mono);font-size:11px;color:var(--green);width:26px;flex-shrink:0}
+.pal-item .sub-k{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+.pal-item.sel{background:var(--green-wash);outline:1px solid var(--line)}
+.pal-foot{display:flex;gap:16px;padding:10px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.04em}
+.pal-foot kbd{background:var(--bg-2);border:1px solid var(--line-soft);border-radius:4px;padding:1px 5px;font-size:10px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--card);border:1px solid var(--green);color:var(--ink);font-family:var(--mono);font-size:13px;padding:11px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:120}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast b{color:var(--green)}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
@@ -241,11 +512,31 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
   .chip.red::after{transition:none;transform:scaleX(1)}
   .chip.green{transition:none;opacity:1;transform:none}
   .dotgrid .dot{animation:none;opacity:1;transform:scale(1)}
-  .status-dot{animation:none}
+  .clock i,.caret,.netmap .link,.hubpulse{animation:none}
+  .cursor-dot,.cursor-ring{display:none}
+  .env-flap{transition:none;transform:rotateX(180deg)}
+  .letter{transition:none;transform:none;opacity:1}
+  .mailbody{transition:none}
 }
 </style>
 </head>
 <body>
+<noscript><style>.reveal{opacity:1;transform:none}.envwrap .env-flap{transform:rotateX(180deg)}.envwrap .letter{transform:none;opacity:1}.mailbody{max-height:none}</style></noscript>
+<canvas id="bgchart" aria-hidden="true"></canvas>
+<div class="cursor-dot" id="cdot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cring" aria-hidden="true"></div>
+
+<!-- scroll rail: climbing arrow -->
+<div class="rail" aria-hidden="true">
+  <svg id="railSvg" preserveAspectRatio="none">
+    <path class="rail-bg" id="railBg" d=""></path>
+    <path class="rail-fill" id="railFill" d=""></path>
+    <g id="railArrow">
+      <polygon class="arrow" points="0,-8 7,6 -7,6"></polygon>
+      <text class="pct" id="railPct" x="-14" y="5">0%</text>
+    </g>
+  </svg>
+</div>
 
 <nav class="nav">
   <div class="nav-in">
@@ -257,17 +548,20 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
       <a class="navlink" href="#sales"><span class="idx">04</span>Sales</a>
       <a class="navlink" href="#bizdev"><span class="idx">05</span>Biz Dev</a>
     </div>
+    <div class="nav-tools">
+      <span class="clock" id="clock"><i></i>LIVE</span>
+      <button class="tool-btn" id="palBtn" type="button"><span class="lbl">Search</span> <kbd>⌘K</kbd></button>
+      <button class="tool-btn" id="themeBtn" type="button" aria-label="Toggle theme"><span id="themeIcon">☾</span></button>
+    </div>
   </div>
   <div class="progress" id="progress"></div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">
-      <span class="status-dot"></span>
-      <span>AVAILABLE FOR NEW OPPORTUNITIES</span>
-      <span>·</span>
-      <span>GROWTH &amp; MARKETING OPERATIONS</span>
+    <div class="terminal">
+      <span class="prompt">hs@growth:~$</span>
+      <span class="typed" id="typed"></span><span class="caret"></span>
     </div>
     <h1>I inherit <span class="flat">flat pages</span>.<br>I hand back <span class="green">green arrows</span>.</h1>
     <div class="flipchips">
@@ -275,141 +569,150 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
       <span class="flip-arrow">→</span>
       <span class="chip green">▲ 390% engagement<small>the same page, five weeks later</small></span>
     </div>
-    <p class="sub">I'm Hetavi Shah. MSc Marketing, Oxford Brookes, Distinction. Five years across social media, performance marketing, email &amp; CRM, sales and business development, for brands in the UK, US, Finland, Dubai and India. Every project below is written the same way: the problem I walked into, and what the numbers looked like when I was done.</p>
+    <p class="sub">I'm Hetavi Shah. MSc Marketing, Oxford Brookes, Distinction. Five years across social media, performance marketing, email &amp; CRM, sales and business development, for brands in the UK, US, Finland, Dubai and India. Every section below is built as the tool it represents. Scroll and watch the arrow climb.</p>
     <div class="hero-meta">
       <span><a href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a></span>
       <span><a href="https://linkedin.com/in/hetavi-shah-0901a21b3" target="_blank" rel="noopener">LinkedIn</a></span>
       <span><a href="https://hetavishah.lovable.app" target="_blank" rel="noopener">hetavishah.lovable.app</a></span>
       <span>REPORT RANGE: 2020 → PRESENT</span>
+      <span class="hint">press <kbd>1</kbd>–<kbd>5</kbd> to jump · <kbd>K</kbd> to search</span>
     </div>
   </div>
 </header>
 
-<!-- ================= 01 SOCIAL MEDIA ================= -->
+<!-- ================= 01 SOCIAL MEDIA (INSTAGRAM FEED) ================= -->
 <section class="block" id="social">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-idx">SECTION 01</span><h2>Social Media</h2></div>
-    <p class="sec-dek reveal">Multi-brand content systems built for reach beyond the follower bubble: strategy, production, trend research and publishing across Instagram, Facebook, LinkedIn, Threads and X.</p>
+    <p class="sec-dek reveal">Multi-brand content systems built for reach beyond the follower bubble. Rendered the way this work actually lives: as a feed.</p>
 
-    <article class="case reveal">
-      <div class="case-top">
-        <span class="tag client">// JANI HAVUNEN, AUTHOR BRAND</span>
-        <span class="tag">Instagram + Facebook</span>
-        <span class="tag">2025 → Present</span>
+    <div class="stories reveal" aria-hidden="true">
+      <div class="story"><div class="ring"><div>45</div></div><span>pieces / week</span></div>
+      <div class="story"><div class="ring"><div>214.2K</div></div><span>IG reach</span></div>
+      <div class="story"><div class="ring"><div>▲123.4K%</div></div><span>views</span></div>
+      <div class="story"><div class="ring"><div>99.9%</div></div><span>new viewers</span></div>
+      <div class="story"><div class="ring"><div>▲390%</div></div><span>LinkedIn eng.</span></div>
+      <div class="story"><div class="ring"><div>1h 12m</div></div><span>watch time</span></div>
+    </div>
+
+    <article class="igpost reveal">
+      <div class="ig-head">
+        <div class="ig-avatar"><div>JH</div></div>
+        <div class="ig-user"><b>janihavunen · author brand</b><span>Instagram + Facebook · 2025 → Present</span></div>
+        <span class="ig-dots">···</span>
       </div>
-      <h3>Breaking an author brand out of its follower bubble</h3>
-      <div class="ledger">
-        <div class="problem">
-          <span class="side-label">THE PROBLEM</span>
-          <p>Content was only reaching the people who already followed the page. Reach had plateaued, video views were flat, and the account depended almost entirely on its existing audience. For a book launch that needs new readers, that is a dead end.</p>
+      <div class="ig-media" data-heartzone>
+        <span class="dbltap-hint">double-tap ♥</span>
+        <span class="side-label" style="color:var(--green)">THE RESULT · ONE WEEK</span>
+        <div class="mgrid">
+          <div class="metric">
+            <span class="m-val" data-count="214.2" data-suffix="K" data-dec="1">0</span>
+            <span class="m-delta up">Instagram reach</span>
+            <span class="m-label">accounts reached in 7 days</span>
+          </div>
+          <div class="metric">
+            <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,22 L14,21.5 L26,21 L38,20.5 L46,19 L54,4 L62,3"/></svg>
+            <span class="m-val" data-count="28.4" data-suffix="K" data-dec="1">0</span>
+            <span class="m-delta up">▲ 123.4K%</span>
+            <span class="m-label">video views vs prior period</span>
+          </div>
+          <div class="metric">
+            <span class="m-val" data-count="99.9" data-suffix="%" data-dec="1">0</span>
+            <span class="m-delta up">▲ 9.4%</span>
+            <span class="m-label">of views from non-followers</span>
+          </div>
+          <div class="metric">
+            <span class="m-val">1h 12m</span>
+            <span class="m-delta up">▲ 9.3K%</span>
+            <span class="m-label">total watch time</span>
+          </div>
         </div>
-        <div class="solved">
-          <span class="side-label">WHAT I DID</span>
-          <ul class="did">
-            <li>Designed and shipped a high-velocity content system: 45 pieces in a single week across posts, stories and reels</li>
-            <li>Rebuilt creative around discovery: trend-aware reels, animated quote graphics and story-first captions engineered for non-follower distribution</li>
-            <li>Ran the full loop myself: strategy, copy, design briefs, scheduling and analytics review</li>
-          </ul>
-          <span class="side-label result-label">THE RESULT · ONE WEEK</span>
-          <div class="mgrid">
-            <div class="metric">
-              <span class="m-val" data-count="214.2" data-suffix="K" data-dec="1">0</span>
-              <span class="m-delta up">Instagram reach</span>
-              <span class="m-label">accounts reached in 7 days</span>
-            </div>
-            <div class="metric">
-              <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,22 L14,21.5 L26,21 L38,20.5 L46,19 L54,4 L62,3"/></svg>
-              <span class="m-val" data-count="28.4" data-suffix="K" data-dec="1">0</span>
-              <span class="m-delta up">▲ 123.4K%</span>
-              <span class="m-label">video views vs prior period</span>
-            </div>
-            <div class="metric">
-              <span class="m-val" data-count="99.9" data-suffix="%" data-dec="1">0</span>
-              <span class="m-delta up">▲ 9.4%</span>
-              <span class="m-label">of views from non-followers</span>
-            </div>
-            <div class="metric">
-              <span class="m-val" data-count="20332" data-comma="1">0</span>
-              <span class="m-delta up">▲ 225.8K%</span>
-              <span class="m-label">unique viewers</span>
-            </div>
-            <div class="metric">
-              <span class="m-val">1h 12m</span>
-              <span class="m-delta up">▲ 9.3K%</span>
-              <span class="m-label">total watch time</span>
-            </div>
-            <div class="metric">
-              <span class="m-val" data-count="189">0</span>
-              <span class="m-delta up">▲ 293.8%</span>
-              <span class="m-label">Facebook profile visits</span>
-            </div>
+        <div class="dotwrap">
+          <div class="dotgrid" id="dotgrid" aria-hidden="true"></div>
+          <div class="legend">
+            <span><i style="background:var(--green)"></i>15 IG posts</span>
+            <span><i style="border:2px solid var(--green)"></i>16 IG stories</span>
+            <span><i style="background:var(--ink)"></i>8 FB posts</span>
+            <span><i style="border:2px solid var(--ink)"></i>6 FB stories</span>
+            <span class="mono">= 45 pieces, 7 days</span>
           </div>
-          <div class="dotwrap">
-            <div class="dotgrid" id="dotgrid" aria-hidden="true"></div>
-            <div class="legend">
-              <span><i style="background:var(--green)"></i>15 IG posts</span>
-              <span><i style="border:2px solid var(--green)"></i>16 IG stories</span>
-              <span><i style="background:var(--ink)"></i>8 FB posts</span>
-              <span><i style="border:2px solid var(--ink)"></i>6 FB stories</span>
-              <span class="mono">= 45 pieces, 7 days</span>
-            </div>
-          </div>
-          <p class="m-src">Source: Meta Business Suite, 7-day window ending 6 Jul 2026</p>
         </div>
       </div>
+      <div class="ig-actions">
+        <svg data-like viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.6 8.6 0 0 1-3.9-.9L3 20l1.2-5.3a8.2 8.2 0 0 1-.7-3.2A8.4 8.4 0 0 1 12 3.2a8.4 8.4 0 0 1 9 8.3z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+        <svg class="save" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="ig-likes">Reached <span>20,332 unique viewers</span> (▲ 225.8K%)</div>
+      <div class="ig-caption">
+        <b>janihavunen</b><span style="color:var(--red);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em"> THE PROBLEM:</span> content was only reaching people who already followed the page. Reach had plateaued, views were flat, and a book launch needs new readers, not the same ones.
+        <ul class="did">
+          <li>Shipped a 45-piece week across posts, stories and reels</li>
+          <li>Rebuilt creative for discovery: trend-aware reels, animated quote graphics, story-first captions</li>
+          <li>Ran the full loop: strategy, copy, design briefs, scheduling, analytics review</li>
+        </ul>
+      </div>
+      <div class="ig-time">July 2026 · Source: Meta Business Suite, 7-day window</div>
     </article>
 
-    <article class="case reveal">
-      <div class="case-top">
-        <span class="tag client">// B2B COMPANY PAGE</span>
-        <span class="tag">LinkedIn</span>
-        <span class="tag">2026</span>
+    <article class="igpost reveal">
+      <div class="ig-head">
+        <div class="ig-avatar"><div>IN</div></div>
+        <div class="ig-user"><b>b2b company page</b><span>LinkedIn · 2026</span></div>
+        <span class="ig-dots">···</span>
       </div>
-      <h3>Waking up a LinkedIn page the feed had stopped showing</h3>
-      <div class="ledger">
-        <div class="problem">
-          <span class="side-label">THE PROBLEM</span>
-          <p>The page had 2,638 followers and almost nothing to show for them. Impressions were shrinking week on week and follower growth had stopped entirely. The algorithm had quietly decided this page was not worth distributing.</p>
-          <div class="before-stats">
-            <div class="bstat"><span>Post impressions / 7 days</span><span>257 <span class="d">▼ 10%</span></span></div>
-            <div class="bstat"><span>Follower growth</span><span><span class="d">0%</span> flat</span></div>
-          </div>
-        </div>
-        <div class="solved">
-          <span class="side-label">WHAT I DID</span>
-          <ul class="did">
-            <li>Replaced announcement-style posts with story-first, documentation-style content built around the founder's real journey</li>
-            <li>Tied every post to a live problem the audience is feeling right now: job insecurity, AI anxiety, burnout</li>
-            <li>Set a consistent cadence with hooks written for the first two lines, where LinkedIn decides your fate</li>
-          </ul>
-          <span class="side-label result-label">THE RESULT · 7 DAYS</span>
-          <div class="mgrid">
-            <div class="metric">
-              <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,23 L14,21 L26,19.5 L38,18.5 L50,4 L62,3.5"/></svg>
-              <span class="m-val" data-count="390" data-prefix="▲ " data-suffix="%">0</span>
-              <span class="m-delta up">49 engagements</span>
-              <span class="m-label">engagement vs prior 7 days</span>
-            </div>
-            <div class="metric">
-              <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,22 L14,20 L26,18.5 L38,16 L50,4.5 L62,3.5"/></svg>
-              <span class="m-val" data-count="296" data-prefix="▲ " data-suffix="%">0</span>
-              <span class="m-delta up">1,817 impressions</span>
-              <span class="m-label">impressions vs prior 7 days</span>
-            </div>
-            <div class="metric">
-              <span class="m-val" data-count="870">0</span>
-              <span class="m-delta up">members reached</span>
-              <span class="m-label">unique members, one week</span>
-            </div>
-            <div class="metric">
-              <span class="m-val" data-count="50" data-prefix="▲ " data-suffix="%">0</span>
-              <span class="m-delta up">profile viewers</span>
-              <span class="m-label">vs prior period</span>
+      <div class="ig-media" data-heartzone>
+        <span class="dbltap-hint">double-tap ♥</span>
+        <div class="ledger">
+          <div class="problem">
+            <span class="side-label">THE PROBLEM</span>
+            <p>2,638 followers and almost nothing to show for them. Impressions shrinking week on week, follower growth stopped. The algorithm had quietly decided this page was not worth distributing.</p>
+            <div class="before-stats">
+              <div class="bstat"><span>Post impressions / 7 days</span><span>257 <span class="d">▼ 10%</span></span></div>
+              <div class="bstat"><span>Follower growth</span><span><span class="d">0%</span> flat</span></div>
             </div>
           </div>
-          <p class="m-src">Source: LinkedIn Analytics, 30 Jun → 6 Jul 2026</p>
+          <div class="solved">
+            <span class="side-label result-label">THE RESULT · 7 DAYS</span>
+            <div class="mgrid">
+              <div class="metric">
+                <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,23 L14,21 L26,19.5 L38,18.5 L50,4 L62,3.5"/></svg>
+                <span class="m-val" data-count="390" data-prefix="▲ " data-suffix="%">0</span>
+                <span class="m-delta up">49 engagements</span>
+                <span class="m-label">engagement vs prior 7 days</span>
+              </div>
+              <div class="metric">
+                <svg class="spark" viewBox="0 0 64 26"><path data-spark d="M2,22 L14,20 L26,18.5 L38,16 L50,4.5 L62,3.5"/></svg>
+                <span class="m-val" data-count="296" data-prefix="▲ " data-suffix="%">0</span>
+                <span class="m-delta up">1,817 impressions</span>
+                <span class="m-label">impressions vs prior 7 days</span>
+              </div>
+              <div class="metric">
+                <span class="m-val" data-count="870">0</span>
+                <span class="m-delta up">members reached</span>
+                <span class="m-label">unique members, one week</span>
+              </div>
+              <div class="metric">
+                <span class="m-val" data-count="50" data-prefix="▲ " data-suffix="%">0</span>
+                <span class="m-delta up">profile viewers</span>
+                <span class="m-label">vs prior period</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="ig-actions">
+        <svg data-like viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.6 8.6 0 0 1-3.9-.9L3 20l1.2-5.3a8.2 8.2 0 0 1-.7-3.2A8.4 8.4 0 0 1 12 3.2a8.4 8.4 0 0 1 9 8.3z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+        <svg class="save" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="ig-likes">Story-first posts tied to <span>live workplace anxieties</span></div>
+      <div class="ig-caption">
+        <b>what i did</b> replaced announcement-style posts with documentation-style storytelling around the founder's real journey, tied every post to a problem the audience feels right now (job insecurity, AI anxiety, burnout), and set a cadence with hooks written for the first two lines, where LinkedIn decides your fate.
+      </div>
+      <div class="ig-time">30 Jun → 6 Jul 2026 · Source: LinkedIn Analytics</div>
     </article>
 
     <div class="minis reveal">
@@ -419,7 +722,7 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
         <p>Running social for four brands at once usually means one voice wins and three go quiet.</p>
         <div class="split"></div>
         <span class="pv green">SOLVED</span>
-        <p>Built separate brand voice systems, content calendars and visual rules per brand, so an author page, a raw storytelling platform and two B2B brands can publish daily without sounding alike.</p>
+        <p>Built separate brand voice systems, content calendars and visual rules per brand, so an author page, a raw storytelling platform and two B2B brands publish daily without sounding alike.</p>
       </div>
       <div class="mini">
         <span class="pv red">PROBLEM</span>
@@ -427,56 +730,75 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
         <p>By the time most brands react to a trend or news moment, it is already over.</p>
         <div class="split"></div>
         <span class="pv green">SOLVED</span>
-        <p>Set up a reactive content workflow: trend and audio research, pre-approved formats and same-day creative briefs, so timely posts ship while they still matter.</p>
+        <p>Set up a reactive workflow: trend and audio research, pre-approved formats and same-day creative briefs, so timely posts ship while they still matter.</p>
       </div>
       <div class="mini">
         <span class="pv red">PROBLEM</span>
         <h4>Faceless brands, human content</h4>
-        <p>Video performs best, but not every brand has someone willing to be on camera every day.</p>
+        <p>Video performs best, but not every brand has someone willing to be on camera daily.</p>
         <div class="split"></div>
         <span class="pv green">SOLVED</span>
-        <p>Built an AI-assisted video pipeline: avatar and lip-sync tools, voice cloning, text-driven faceless video and CapCut assembly, producing a 28-video organic bank from one recording session.</p>
+        <p>Built an AI-assisted video pipeline: avatars, lip-sync, voice cloning, faceless video and CapCut assembly, producing a 28-video organic bank from one recording session.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 02 PERFORMANCE ================= -->
+<!-- ================= 02 PERFORMANCE (ANALYTICS TOOL) ================= -->
 <section class="block" id="performance">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-idx">SECTION 02</span><h2>Performance Marketing</h2></div>
-    <p class="sec-dek reveal">Paid media, measurement and SEO across four markets: campaigns that answer to a dashboard, not a feeling.</p>
+    <p class="sec-dek reveal">Paid media, measurement and SEO across four markets, presented the way I judge it: inside the dashboard.</p>
 
-    <article class="case reveal">
-      <div class="case-top">
-        <span class="tag client">// INOBAL</span>
-        <span class="tag">Google Ads + Meta</span>
-        <span class="tag">GA4 · Power BI · GTM</span>
-        <span class="tag">2026 → Present</span>
+    <div class="browser reveal">
+      <div class="b-head">
+        <div class="b-dots"><i></i><i></i><i></i></div>
+        <div class="b-url">https://<b>hs-analytics.app</b>/inobal/overview</div>
+        <div class="b-range">Last 7 days ▾</div>
       </div>
-      <h3>Multi-market paid media with measurement people actually read</h3>
-      <div class="ledger">
-        <div class="problem">
-          <span class="side-label">THE PROBLEM</span>
-          <p>Campaigns running across the UK, US, Finland and Dubai with no unified way to see what was working. Reporting was manual, conversion tracking was incomplete, and budget decisions were being made on instinct rather than data.</p>
+      <div class="b-body">
+        <div class="case-top">
+          <span class="tag client">// INOBAL</span>
+          <span class="tag">Google Ads + Meta</span>
+          <span class="tag">GA4 · Power BI · GTM</span>
+          <span class="tag">2026 → Present</span>
         </div>
-        <div class="solved">
-          <span class="side-label">WHAT I DID</span>
-          <ul class="did">
-            <li>Managed end-to-end Google Ads and Meta campaigns across four markets, covering lead generation and ROAS optimisation</li>
-            <li>Implemented GTM tracking with a booked consultation as the primary conversion action, so ads optimise toward revenue conversations, not clicks</li>
-            <li>Built GA4 and Power BI dashboards that turned scattered campaign data into a single view stakeholders check weekly</li>
-            <li>Worked Quality Score deliberately: ad relevance, landing page experience and expected CTR treated as levers, not mysteries</li>
-          </ul>
-          <span class="side-label result-label">THE RESULT</span>
-          <div class="mgrid">
-            <div class="metric"><span class="m-val">4</span><span class="m-delta up">markets</span><span class="m-label">UK · US · FI · UAE, one system</span></div>
-            <div class="metric"><span class="m-val">1</span><span class="m-delta up">conversion truth</span><span class="m-label">booked consultations as the north-star action</span></div>
-            <div class="metric"><span class="m-val">Weekly</span><span class="m-delta up">stakeholder reporting</span><span class="m-label">automated dashboards replacing manual decks</span></div>
+        <h3>Multi-market paid media with measurement people actually read</h3>
+        <svg class="bigchart" viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(43,217,138,.35)"/>
+              <stop offset="100%" stop-color="rgba(43,217,138,0)"/>
+            </linearGradient>
+          </defs>
+          <line class="axis" x1="0" y1="130" x2="600" y2="130"></line>
+          <path class="area" d="M0,120 L60,116 L120,112 L180,104 L240,100 L300,88 L360,80 L420,56 L480,44 L540,26 L600,18 L600,130 L0,130 Z"></path>
+          <path class="stroke" data-draw d="M0,120 L60,116 L120,112 L180,104 L240,100 L300,88 L360,80 L420,56 L480,44 L540,26 L600,18"></path>
+          <text x="6" y="145">MON</text><text x="290" y="145">THU</text><text x="566" y="145">SUN</text>
+        </svg>
+        <div class="b-ledger">
+          <div class="problem">
+            <span class="side-label">THE PROBLEM</span>
+            <p>Campaigns running across the UK, US, Finland and Dubai with no unified way to see what was working. Reporting was manual, conversion tracking incomplete, and budget decisions were being made on instinct rather than data.</p>
+          </div>
+          <div class="solved">
+            <span class="side-label">WHAT I DID</span>
+            <ul class="did">
+              <li>Managed end-to-end Google Ads and Meta campaigns across four markets, covering lead generation and ROAS optimisation</li>
+              <li>Implemented GTM tracking with a booked consultation as the primary conversion, so ads optimise toward revenue conversations, not clicks</li>
+              <li>Built GA4 and Power BI dashboards that turned scattered data into one view stakeholders check weekly</li>
+              <li>Worked Quality Score deliberately: ad relevance, landing page experience and expected CTR treated as levers, not mysteries</li>
+            </ul>
+            <span class="side-label result-label">THE RESULT</span>
+            <div class="mgrid">
+              <div class="metric"><span class="m-val">4</span><span class="m-delta up">markets</span><span class="m-label">UK · US · FI · UAE, one system</span></div>
+              <div class="metric"><span class="m-val">1</span><span class="m-delta up">conversion truth</span><span class="m-label">booked consultations as the north-star action</span></div>
+              <div class="metric"><span class="m-val">Weekly</span><span class="m-delta up">reporting</span><span class="m-label">automated dashboards replacing manual decks</span></div>
+            </div>
           </div>
         </div>
       </div>
-    </article>
+    </div>
 
     <div class="minis reveal">
       <div class="mini">
@@ -485,12 +807,12 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
         <p>Audit found critically low mobile performance: slow largest contentful paint and render-blocking resources killing paid traffic before it landed.</p>
         <div class="split"></div>
         <span class="pv green">SOLVED</span>
-        <p>Ran full technical SEO audits with PageSpeed Insights, SEO Site Checkup and SEOptimer, then delivered a prioritised fix roadmap: what to fix first, why, and the expected impact of each item.</p>
+        <p>Ran full technical SEO audits with PageSpeed Insights, SEO Site Checkup and SEOptimer, then delivered a prioritised fix roadmap: what to fix first, why, and expected impact.</p>
       </div>
       <div class="mini">
         <span class="pv red">PROBLEM</span>
         <h4>Invisible domain authority</h4>
-        <p>A second brand site had very low domain strength, missing schema markup and no SPF records, hurting both rankings and email deliverability.</p>
+        <p>A second brand site had very low domain strength, missing schema markup and no SPF records, hurting rankings and deliverability.</p>
         <div class="split"></div>
         <span class="pv green">SOLVED</span>
         <p>Documented every gap and translated technical findings into a plain-language action plan the client could hand to a developer the same day.</p>
@@ -515,104 +837,137 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
   </div>
 </section>
 
-<!-- ================= 03 EMAIL & CRM ================= -->
+<!-- ================= 03 EMAIL & CRM (ENVELOPE + INBOX) ================= -->
 <section class="block" id="email">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-idx">SECTION 03</span><h2>Email &amp; CRM</h2></div>
-    <p class="sec-dek reveal">Outbound engines, lifecycle flows and CRM hygiene: email built for the inbox it actually lands in.</p>
+    <p class="sec-dek reveal">Outbound engines, lifecycle flows and CRM hygiene. Opened the way email should be: as a letter worth reading.</p>
 
-    <article class="case reveal">
-      <div class="case-top">
-        <span class="tag client">// INOBAL</span>
-        <span class="tag">Saleshandy · Mailchimp · Brevo · HubSpot</span>
-        <span class="tag">2025 → Present</span>
-      </div>
-      <h3>A cold outbound engine built for replies, not opens</h3>
-      <div class="ledger">
-        <div class="problem">
-          <span class="side-label">THE PROBLEM</span>
-          <p>Cold email to SMBs and funded startups was landing in spam or being ignored. Marketing-speak, heavy HTML and link-stuffed first sends were tripping filters and burning the domain before a human ever read a word.</p>
+    <div class="envwrap reveal" id="envwrap">
+      <div class="env-flap" aria-hidden="true"></div>
+      <article class="letter">
+        <div class="stamp" aria-hidden="true"><span class="tri">▲</span><small>HETAVI · 2026</small></div>
+        <div class="postmark" aria-hidden="true">SENT<br>WORLDWIDE</div>
+        <div class="mailmeta">
+          <span><b>From:</b> Hetavi Shah &lt;hetavi02@gmail.com&gt;</span>
+          <span><b>To:</b> Cold inboxes in 4 markets</span>
+          <span><b>Subject:</b> A cold outbound engine built for replies, not opens</span>
         </div>
-        <div class="solved">
-          <span class="side-label">WHAT I DID</span>
-          <ul class="did">
-            <li>Rebuilt the system around deliverability first: plain-text sends, no hyperlinks in early touches, and copy rules designed to read like a person wrote them</li>
-            <li>Wrote a four-touch sequence on a Hook, Pain, Shift, CTA framework with simple Yes/No reply triggers that make responding effortless</li>
-            <li>Layered psychology deliberately: mirroring, identity and micro-commitment across the sequence instead of one desperate pitch</li>
-            <li>Segmented targeting across US, UK, Canada and Australia/NZ, with separate angles per vertical</li>
-          </ul>
-          <span class="side-label result-label">THE RESULT</span>
-          <div class="mgrid">
-            <div class="metric"><span class="m-val">4-touch</span><span class="m-delta up">sequence</span><span class="m-label">every send has one job and one ask</span></div>
-            <div class="metric"><span class="m-val">Plain text</span><span class="m-delta up">deliverability</span><span class="m-label">built to pass filters and feel human</span></div>
-            <div class="metric"><span class="m-val">4</span><span class="m-delta up">markets</span><span class="m-label">US · UK · CA · AU/NZ verticalised</span></div>
+        <div class="case-top">
+          <span class="tag client">// INOBAL</span>
+          <span class="tag">Saleshandy · Mailchimp · Brevo · HubSpot</span>
+          <span class="tag">2025 → Present</span>
+        </div>
+        <div class="ledger">
+          <div class="problem">
+            <span class="side-label">THE PROBLEM</span>
+            <p>Cold email to SMBs and funded startups was landing in spam or being ignored. Marketing-speak, heavy HTML and link-stuffed first sends were tripping filters and burning the domain before a human ever read a word.</p>
+          </div>
+          <div class="solved">
+            <span class="side-label">WHAT I DID</span>
+            <ul class="did">
+              <li>Rebuilt the system around deliverability first: plain-text sends, no hyperlinks in early touches, copy that reads like a person wrote it</li>
+              <li>Wrote a four-touch sequence on a Hook, Pain, Shift, CTA framework with Yes/No reply triggers that make responding effortless</li>
+              <li>Layered psychology deliberately: mirroring, identity and micro-commitment across the sequence instead of one desperate pitch</li>
+              <li>Segmented targeting across US, UK, Canada and Australia/NZ, with separate angles per vertical</li>
+            </ul>
+            <span class="side-label result-label">THE RESULT</span>
+            <div class="mgrid">
+              <div class="metric"><span class="m-val">4-touch</span><span class="m-delta up">sequence</span><span class="m-label">every send has one job and one ask</span></div>
+              <div class="metric"><span class="m-val">Plain text</span><span class="m-delta up">deliverability</span><span class="m-label">built to pass filters and feel human</span></div>
+              <div class="metric"><span class="m-val">4</span><span class="m-delta up">markets</span><span class="m-label">US · UK · CA · AU/NZ verticalised</span></div>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
 
-    <div class="minis reveal">
-      <div class="mini">
-        <span class="pv red">PROBLEM</span>
-        <h4>Email clients strip your design</h4>
-        <p>A podcast promo email needed motion and personality, but Gmail and Outlook strip CSS animation on arrival.</p>
-        <div class="split"></div>
-        <span class="pv green">SOLVED</span>
-        <p>Engineered the motion as an animated GIF review marquee instead, inside a hand-coded 480px HTML template, so the email moves in every major client.</p>
+    <div class="inbox reveal">
+      <div class="inbox-head"><span>INBOX · MORE EMAIL WORK</span><span>3 UNREAD</span></div>
+      <div class="mailrow" data-mailrow>
+        <div class="mailrow-line">
+          <span class="unread"></span>
+          <span class="from">Hetavi Shah</span>
+          <span class="subj"><b>Email clients strip your design</b> <span>· so I animated it with a GIF instead</span></span>
+          <span class="when">10:42</span>
+          <span class="chev">›</span>
+        </div>
+        <div class="mailbody"><div class="mailbody-in">
+          <span class="pv red">PROBLEM</span>
+          <p>A podcast promo email needed motion and personality, but Gmail and Outlook strip CSS animation on arrival.</p>
+          <div class="gap"></div>
+          <span class="pv green">SOLVED</span>
+          <p>Engineered the motion as an animated GIF review marquee inside a hand-coded 480px HTML template, so the email moves in every major client.</p>
+        </div></div>
       </div>
-      <div class="mini">
-        <span class="pv red">PROBLEM</span>
-        <h4>A book with no email journey</h4>
-        <p>Readers who showed interest had nowhere to go next.</p>
-        <div class="split"></div>
-        <span class="pv green">SOLVED</span>
-        <p>Built chapter-based Mailchimp HTML templates and nurture flows that walk a new subscriber from curiosity to purchase, written like letters, not blasts.</p>
+      <div class="mailrow" data-mailrow>
+        <div class="mailrow-line">
+          <span class="unread"></span>
+          <span class="from">Hetavi Shah</span>
+          <span class="subj"><b>A book with no email journey</b> <span>· readers had nowhere to go next</span></span>
+          <span class="when">09:15</span>
+          <span class="chev">›</span>
+        </div>
+        <div class="mailbody"><div class="mailbody-in">
+          <span class="pv red">PROBLEM</span>
+          <p>Readers who showed interest had nowhere to go next.</p>
+          <div class="gap"></div>
+          <span class="pv green">SOLVED</span>
+          <p>Built chapter-based Mailchimp HTML templates and nurture flows that walk a new subscriber from curiosity to purchase, written like letters, not blasts.</p>
+        </div></div>
       </div>
-      <div class="mini">
-        <span class="pv red">PROBLEM</span>
-        <h4>CRM as a junk drawer</h4>
-        <p>Contacts scattered across tools, no segmentation, no ownership of follow-up.</p>
-        <div class="split"></div>
-        <span class="pv green">SOLVED</span>
-        <p>Managed CRM systems and list hygiene across HubSpot, Mailchimp and Brevo: segmentation, automation flows and n8n workflows that cut manual workload across accounts.</p>
+      <div class="mailrow" data-mailrow>
+        <div class="mailrow-line">
+          <span class="unread"></span>
+          <span class="from">Hetavi Shah</span>
+          <span class="subj"><b>CRM as a junk drawer</b> <span>· contacts everywhere, ownership nowhere</span></span>
+          <span class="when">08:03</span>
+          <span class="chev">›</span>
+        </div>
+        <div class="mailbody"><div class="mailbody-in">
+          <span class="pv red">PROBLEM</span>
+          <p>Contacts scattered across tools, no segmentation, no ownership of follow-up.</p>
+          <div class="gap"></div>
+          <span class="pv green">SOLVED</span>
+          <p>Managed CRM systems and list hygiene across HubSpot, Mailchimp and Brevo: segmentation, automation flows and n8n workflows that cut manual workload across accounts.</p>
+        </div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 04 SALES ================= -->
+<!-- ================= 04 SALES (PIPELINE BOARD) ================= -->
 <section class="block" id="sales">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-idx">SECTION 04</span><h2>Sales</h2></div>
-    <p class="sec-dek reveal">Sales enablement: the scripts, decks and assets that turn interest into booked conversations.</p>
+    <p class="sec-dek reveal">Sales enablement, laid out as the pipeline it feeds: problem in the left column, closed and won on the right.</p>
 
-    <article class="case reveal">
-      <div class="case-top">
-        <span class="tag client">// INOBAL</span>
-        <span class="tag">Remote staffing offer</span>
-        <span class="tag">2025 → Present</span>
-      </div>
-      <h3>Giving a service business a repeatable sales motion</h3>
-      <div class="ledger">
-        <div class="problem">
-          <span class="side-label">THE PROBLEM</span>
-          <p>Every pitch was improvised. No scripts, no consistent positioning, no materials to leave behind. Deals depended entirely on who happened to be in the room and how good their day was.</p>
-        </div>
-        <div class="solved">
-          <span class="side-label">WHAT I DID</span>
-          <ul class="did">
-            <li>Wrote sales scripts and call frameworks for the remote staffing offer, from opener to objection handling to close</li>
-            <li>Produced pitch materials and one-pagers so every conversation ends with something concrete in the prospect's hands</li>
-            <li>Positioned the offer around the buyer's actual pain, hiring cost and speed, rather than a feature list</li>
-          </ul>
-          <span class="side-label result-label">THE RESULT</span>
-          <div class="mgrid">
-            <div class="metric"><span class="m-val">1</span><span class="m-delta up">sales motion</span><span class="m-label">repeatable from first call to close</span></div>
-            <div class="metric"><span class="m-val">Every rep</span><span class="m-delta up">same story</span><span class="m-label">consistent positioning across the team</span></div>
-          </div>
+    <div class="case-top reveal" style="margin-bottom:18px">
+      <span class="tag client">// INOBAL</span>
+      <span class="tag">Remote staffing offer</span>
+      <span class="tag">2025 → Present</span>
+    </div>
+
+    <div class="board reveal">
+      <div class="kcol c-red">
+        <div class="kcol-head">THE PROBLEM <span class="cnt">1</span></div>
+        <div class="kcard">
+          <span class="ktag">STAGE: LEAD</span>
+          <p><b>Every pitch was improvised.</b> No scripts, no consistent positioning, no materials to leave behind. Deals depended entirely on who happened to be in the room and how good their day was.</p>
         </div>
       </div>
-    </article>
+      <div class="kcol c-amber">
+        <div class="kcol-head">WHAT I DID <span class="cnt">3</span></div>
+        <div class="kcard"><span class="ktag">IN PROGRESS</span><p><b>Sales scripts and call frameworks</b> for the remote staffing offer, from opener to objection handling to close.</p></div>
+        <div class="kcard"><span class="ktag">IN PROGRESS</span><p><b>Pitch materials and one-pagers</b> so every conversation ends with something concrete in the prospect's hands.</p></div>
+        <div class="kcard"><span class="ktag">IN PROGRESS</span><p><b>Positioning around real pain,</b> hiring cost and speed, rather than a feature list.</p></div>
+      </div>
+      <div class="kcol c-green">
+        <div class="kcol-head">THE RESULT <span class="cnt">2</span></div>
+        <div class="kcard"><span class="ktag">CLOSED · WON</span><p><b>One repeatable sales motion</b> from first call to close.</p></div>
+        <div class="kcard"><span class="ktag">CLOSED · WON</span><p><b>Every rep tells the same story.</b> Consistent positioning across the team.</p></div>
+      </div>
+    </div>
 
     <div class="minis reveal">
       <div class="mini">
@@ -635,13 +990,33 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
   </div>
 </section>
 
-<!-- ================= 05 BIZ DEV ================= -->
+<!-- ================= 05 BIZ DEV (NETWORK MAP) ================= -->
 <section class="block" id="bizdev">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-idx">SECTION 05</span><h2>Business Development</h2></div>
-    <p class="sec-dek reveal">Pipeline you can point to: lead infrastructure, outreach systems and the SOPs that make growth repeatable.</p>
+    <p class="sec-dek reveal">Pipeline you can point to: lead infrastructure, outreach systems and SOPs, mapped across the markets they actually ran in.</p>
 
-    <article class="case reveal">
+    <div class="netmap reveal" aria-hidden="true">
+      <svg viewBox="0 0 700 280">
+        <line class="link" x1="350" y1="140" x2="110" y2="60"></line>
+        <line class="link" x1="350" y1="140" x2="590" y2="55"></line>
+        <line class="link" x1="350" y1="140" x2="90" y2="210"></line>
+        <line class="link" x1="350" y1="140" x2="610" y2="215"></line>
+        <line class="link" x1="350" y1="140" x2="290" y2="35"></line>
+        <line class="link" x1="350" y1="140" x2="430" y2="245"></line>
+        <circle class="hubpulse" cx="350" cy="140" r="24"></circle>
+        <circle class="node hub" cx="350" cy="140" r="26"></circle>
+        <text class="hubtext" x="350" y="145" text-anchor="middle">HS</text>
+        <circle class="node" cx="110" cy="60" r="17"></circle><text class="nlabel" x="110" y="34" text-anchor="middle">US</text>
+        <circle class="node" cx="590" cy="55" r="17"></circle><text class="nlabel" x="590" y="29" text-anchor="middle">UK</text>
+        <circle class="node" cx="90" cy="210" r="17"></circle><text class="nlabel" x="90" y="248" text-anchor="middle">NL</text>
+        <circle class="node" cx="610" cy="215" r="17"></circle><text class="nlabel" x="610" y="253" text-anchor="middle">FR</text>
+        <circle class="node" cx="290" cy="35" r="17"></circle><text class="nlabel" x="290" y="14" text-anchor="middle">FI</text>
+        <circle class="node" cx="430" cy="245" r="17"></circle><text class="nlabel" x="430" y="276" text-anchor="middle">UAE</text>
+      </svg>
+    </div>
+
+    <article class="tracker reveal">
       <div class="case-top">
         <span class="tag client">// INOBAL + WORTHMINDS</span>
         <span class="tag">Apollo · Hunter · Sales Navigator</span>
@@ -732,13 +1107,14 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer>
+<footer id="contact">
   <div class="wrap">
     <h2 class="reveal">Have a flat page?<br>Let's turn it <em>green</em>.</h2>
     <div class="fmeta reveal">
-      <a class="btn solid" href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a>
-      <a class="btn" href="https://linkedin.com/in/hetavi-shah-0901a21b3" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://hetavishah.lovable.app" target="_blank" rel="noopener">hetavishah.lovable.app</a>
+      <a class="btn solid magnet" href="mailto:hetavi02@gmail.com">hetavi02@gmail.com</a>
+      <button class="btn magnet" type="button" data-copy="hetavi02@gmail.com">Copy email</button>
+      <a class="btn magnet" href="https://linkedin.com/in/hetavi-shah-0901a21b3" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn magnet" href="https://hetavishah.lovable.app" target="_blank" rel="noopener">hetavishah.lovable.app</a>
     </div>
     <div class="foot-note">
       <span>HETAVI SHAH · GROWTH &amp; MARKETING OPERATIONS</span>
@@ -747,27 +1123,201 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
   </div>
 </footer>
 
+<!-- command palette -->
+<div class="palette-backdrop" id="palBackdrop" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="palette">
+    <input type="text" id="palInput" placeholder="Type a command or section…" autocomplete="off">
+    <div class="pal-list" id="palList"></div>
+    <div class="pal-foot">
+      <span><kbd>↑↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><b>✓</b> <span id="toastMsg">Copied</span></div>
+
 <script>
 (function(){
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isCoarse = window.matchMedia('(pointer:coarse)').matches;
 
-  /* hero flip */
+  console.log('%c▲ HS_REPORT','color:#2BD98A;font-family:monospace;font-size:22px;font-weight:bold');
+  console.log('%cRed arrows in. Green arrows out. → hetavi02@gmail.com','color:#8aa;font-family:monospace');
+
+  /* ---------- theme ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var themeIcon = document.getElementById('themeIcon');
+  function getStored(){ try{ return localStorage.getItem('hs-theme'); }catch(e){ return null; } }
+  function store(v){ try{ localStorage.setItem('hs-theme', v); }catch(e){} }
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    themeIcon.textContent = t === 'dark' ? '☾' : '☀';
+  }
+  var saved = getStored();
+  if(saved) applyTheme(saved);
+  themeBtn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next); store(next);
+  });
+
+  /* ---------- clock ---------- */
+  var clock = document.getElementById('clock');
+  function tick(){
+    var d = new Date();
+    var hh = String(d.getHours()).padStart(2,'0');
+    var mm = String(d.getMinutes()).padStart(2,'0');
+    var ss = String(d.getSeconds()).padStart(2,'0');
+    clock.innerHTML = '<i></i>LIVE · ' + hh + ':' + mm + ':' + ss;
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- hero flip + typed terminal ---------- */
   window.addEventListener('load', function(){
     document.querySelector('.hero').classList.add('loaded');
   });
+  var phrases = [
+    'importing meta_business_suite_jul2026 …',
+    '▲ 123.4K% video views detected',
+    'importing linkedin_analytics …',
+    '▲ 390% engagement confirmed',
+    'status: available_for_hire = true'
+  ];
+  var typedEl = document.getElementById('typed');
+  if(prefersReduced){
+    typedEl.textContent = phrases[4];
+  } else {
+    var pi = 0, ci = 0, deleting = false;
+    function typeLoop(){
+      var full = phrases[pi];
+      if(!deleting){
+        ci++;
+        typedEl.textContent = full.slice(0, ci);
+        if(ci === full.length){ deleting = true; setTimeout(typeLoop, 1700); return; }
+        setTimeout(typeLoop, 34 + Math.random()*40);
+      } else {
+        ci--;
+        typedEl.textContent = full.slice(0, ci);
+        if(ci === 0){ deleting = false; pi = (pi+1) % phrases.length; setTimeout(typeLoop, 350); return; }
+        setTimeout(typeLoop, 16);
+      }
+    }
+    typeLoop();
+  }
 
-  /* duplicate ticker for seamless loop */
+  /* ---------- scroll rail: climbing arrow ---------- */
+  var railSvg = document.getElementById('railSvg');
+  var railBg = document.getElementById('railBg');
+  var railFill = document.getElementById('railFill');
+  var railArrow = document.getElementById('railArrow');
+  var railPct = document.getElementById('railPct');
+  var railLen = 0;
+  function buildRail(){
+    var H = window.innerHeight;
+    railSvg.setAttribute('viewBox','0 0 74 ' + H);
+    railSvg.setAttribute('width','74');
+    railSvg.setAttribute('height',H);
+    var xs = [37,37,22,52,26,50,30,44,37,37];
+    var fr = [0.985,0.88,0.78,0.66,0.545,0.43,0.315,0.20,0.10,0.03];
+    var d = '';
+    for(var i=0;i<xs.length;i++){
+      d += (i===0?'M':' L') + xs[i] + ',' + Math.round(H*fr[i]);
+    }
+    railBg.setAttribute('d', d);
+    railFill.setAttribute('d', d);
+    railLen = railFill.getTotalLength();
+    railFill.style.strokeDasharray = railLen;
+    updateRail();
+  }
+  function updateRail(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? Math.min(Math.max(h.scrollTop / max, 0), 1) : 0;
+    railFill.style.strokeDashoffset = railLen * (1 - p);
+    var pt = railFill.getPointAtLength(railLen * p);
+    railArrow.setAttribute('transform','translate(' + pt.x + ',' + pt.y + ')');
+    railPct.textContent = Math.round(p*100) + '%';
+  }
+  buildRail();
+  window.addEventListener('resize', buildRail);
+
+  /* ---------- canvas background ---------- */
+  var canvas = document.getElementById('bgchart');
+  var ctx = canvas.getContext('2d');
+  var W, H2, lines;
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H2 = canvas.height = window.innerHeight;
+    lines = [
+      {startY:H2*0.85, endY:H2*0.35, speed:0.00016, offset:0},
+      {startY:H2*0.95, endY:H2*0.55, speed:0.00011, offset:1200}
+    ];
+  }
+  var running = !prefersReduced;
+  function draw(ts){
+    if(!running) return;
+    ctx.clearRect(0,0,W,H2);
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.strokeStyle = isDark ? 'rgba(43,217,138,.2)' : 'rgba(14,138,79,.15)';
+    ctx.lineWidth = 1.5;
+    lines.forEach(function(L){
+      ctx.beginPath();
+      var n = 90;
+      for(var i=0;i<=n;i++){
+        var x = (i/n)*W;
+        var prog = i/n;
+        var base = L.startY + (L.endY - L.startY)*prog;
+        var wob = Math.sin(prog*9 + ts*L.speed + L.offset) * 14
+                + Math.sin(prog*23 + ts*L.speed*1.7 + L.offset) * 6;
+        ctx[i===0?'moveTo':'lineTo'](x, base + wob);
+      }
+      ctx.stroke();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  if(running) requestAnimationFrame(draw);
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){ running = false; }
+    else if(!prefersReduced){ running = true; requestAnimationFrame(draw); }
+  });
+
+  /* ---------- custom cursor ---------- */
+  var dot = document.getElementById('cdot'), ring = document.getElementById('cring');
+  if(!isCoarse && !prefersReduced){
+    document.body.classList.add('has-cursor');
+    var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+    document.addEventListener('pointermove', function(e){ mx=e.clientX; my=e.clientY; });
+    (function loop(){
+      rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+      dot.style.transform = 'translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
+      ring.style.transform = 'translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    })();
+    document.addEventListener('pointerover', function(e){
+      if(e.target.closest('a,button,.navlink,.metric,.pal-item,.mailrow,.kcard,[data-like]')) document.body.classList.add('cursor-hover');
+    });
+    document.addEventListener('pointerout', function(e){
+      if(e.target.closest('a,button,.navlink,.metric,.pal-item,.mailrow,.kcard,[data-like]')) document.body.classList.remove('cursor-hover');
+    });
+  } else {
+    dot.style.display='none'; ring.style.display='none';
+  }
+
+  /* ---------- ticker ---------- */
   var track = document.getElementById('tickertrack');
   if(track){ track.innerHTML += track.innerHTML; }
 
-  /* build 45-dot grid: 15 igp, 16 igs, 8 fbp, 6 fbs */
+  /* ---------- dot grid ---------- */
   var grid = document.getElementById('dotgrid');
   if(grid){
     var types = [];
     for(var a=0;a<15;a++) types.push('igp');
     for(var b=0;b<16;b++) types.push('igs');
     for(var c=0;c<8;c++) types.push('fbp');
-    for(var d=0;d<6;d++) types.push('fbs');
+    for(var d2=0;d2<6;d2++) types.push('fbs');
     types.forEach(function(t,i){
       var el = document.createElement('span');
       el.className = 'dot ' + t;
@@ -776,7 +1326,7 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
     });
   }
 
-  /* count up */
+  /* ---------- count up / spark draw ---------- */
   function countUp(el){
     var target = parseFloat(el.getAttribute('data-count'));
     var dec = parseInt(el.getAttribute('data-dec')||'0',10);
@@ -798,8 +1348,6 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
     }
     requestAnimationFrame(step);
   }
-
-  /* sparkline draw */
   function drawSpark(path){
     var len = path.getTotalLength();
     path.style.strokeDasharray = len;
@@ -811,27 +1359,170 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
     }
   }
 
-  /* observers */
-  var seen = new WeakSet();
+  /* ---------- observers ---------- */
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
-      if(!en.isIntersecting || seen.has(en.target)) return;
-      seen.add(en.target);
+      if(!en.isIntersecting) return;
       var t = en.target;
+      io.unobserve(t);
       if(t.classList.contains('reveal')) t.classList.add('on');
+      if(t.id === 'envwrap') t.classList.add('on');
       if(t.classList.contains('metric')){
         var v = t.querySelector('[data-count]');
         if(v) countUp(v);
         var s = t.querySelector('[data-spark]');
         if(s) drawSpark(s);
       }
+      if(t.hasAttribute && t.hasAttribute('data-draw')) drawSpark(t);
       if(t.id === 'dotgrid') t.classList.add('on');
     });
   },{threshold:.25});
+  document.querySelectorAll('.reveal,.metric,#dotgrid,#envwrap,[data-draw]').forEach(function(el){ io.observe(el); });
 
-  document.querySelectorAll('.reveal,.metric,#dotgrid').forEach(function(el){ io.observe(el); });
+  /* ---------- spotlight on minis ---------- */
+  document.querySelectorAll('.mini').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left)+'px');
+      card.style.setProperty('--my', (e.clientY - r.top)+'px');
+    });
+  });
 
-  /* nav active + progress */
+  /* ---------- IG double-tap hearts + like buttons ---------- */
+  document.querySelectorAll('[data-heartzone]').forEach(function(zone){
+    zone.addEventListener('dblclick', function(e){
+      var r = zone.getBoundingClientRect();
+      var h = document.createElement('span');
+      h.className = 'heartburst';
+      h.textContent = '♥';
+      h.style.left = (e.clientX - r.left) + 'px';
+      h.style.top = (e.clientY - r.top) + 'px';
+      zone.appendChild(h);
+      setTimeout(function(){ h.remove(); }, 850);
+      var likeBtn = zone.parentElement.querySelector('[data-like]');
+      if(likeBtn) likeBtn.classList.add('liked');
+    });
+  });
+  document.querySelectorAll('[data-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.classList.toggle('liked'); });
+  });
+
+  /* ---------- inbox accordion ---------- */
+  document.querySelectorAll('[data-mailrow]').forEach(function(row){
+    var body = row.querySelector('.mailbody');
+    row.querySelector('.mailrow-line').addEventListener('click', function(){
+      var open = row.classList.toggle('open');
+      body.style.maxHeight = open ? body.scrollHeight + 'px' : '0px';
+      var dotEl = row.querySelector('.unread');
+      if(open && dotEl) dotEl.style.opacity = '.25';
+    });
+  });
+
+  /* ---------- magnetic buttons ---------- */
+  if(!isCoarse && !prefersReduced){
+    document.querySelectorAll('.magnet').forEach(function(btn){
+      btn.addEventListener('pointermove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - (r.left + r.width/2);
+        var y = e.clientY - (r.top + r.height/2);
+        btn.style.transform = 'translate('+(x*.15)+'px,'+(y*.25)+'px)';
+      });
+      btn.addEventListener('pointerleave', function(){ btn.style.transform=''; });
+    });
+  }
+
+  /* ---------- toast + copy ---------- */
+  var toast = document.getElementById('toast');
+  var toastMsg = document.getElementById('toastMsg');
+  var toastTimer;
+  function showToast(msg){
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2000);
+  }
+  function copyText(txt){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ showToast('Email copied'); }, function(){ showToast(txt); });
+    } else { showToast(txt); }
+  }
+  document.querySelectorAll('button[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){ copyText(b.getAttribute('data-copy')); });
+  });
+
+  /* ---------- command palette ---------- */
+  var backdrop = document.getElementById('palBackdrop');
+  var input = document.getElementById('palInput');
+  var list = document.getElementById('palList');
+  function jump(sel){
+    var el = document.querySelector(sel);
+    if(el) el.scrollIntoView({behavior: prefersReduced ? 'auto' : 'smooth'});
+  }
+  var commands = [
+    {k:'01', label:'Go to Social Media', act:function(){ jump('#social'); }},
+    {k:'02', label:'Go to Performance Marketing', act:function(){ jump('#performance'); }},
+    {k:'03', label:'Go to Email & CRM', act:function(){ jump('#email'); }},
+    {k:'04', label:'Go to Sales', act:function(){ jump('#sales'); }},
+    {k:'05', label:'Go to Business Development', act:function(){ jump('#bizdev'); }},
+    {k:'ED', label:'Go to Education & Certifications', act:function(){ jump('#credentials'); }},
+    {k:'⤓', label:'Go to Contact', act:function(){ jump('#contact'); }},
+    {k:'⎘', label:'Copy email address', sub:'hetavi02@gmail.com', act:function(){ copyText('hetavi02@gmail.com'); }},
+    {k:'↗', label:'Open LinkedIn profile', act:function(){ window.open('https://linkedin.com/in/hetavi-shah-0901a21b3','_blank'); }},
+    {k:'↗', label:'Open hetavishah.lovable.app', act:function(){ window.open('https://hetavishah.lovable.app','_blank'); }},
+    {k:'◐', label:'Toggle light / dark theme', act:function(){ themeBtn.click(); }},
+    {k:'↑', label:'Back to top', act:function(){ jump('#top'); }}
+  ];
+  var filtered = commands.slice();
+  var selIdx = 0;
+  function renderList(){
+    list.innerHTML = '';
+    filtered.forEach(function(c,i){
+      var div = document.createElement('div');
+      div.className = 'pal-item' + (i===selIdx?' sel':'');
+      div.innerHTML = '<span class="k">'+c.k+'</span><span>'+c.label+'</span>' + (c.sub?'<span class="sub-k">'+c.sub+'</span>':'');
+      div.addEventListener('click', function(){ run(c); });
+      div.addEventListener('pointerenter', function(){ selIdx=i; paint(); });
+      list.appendChild(div);
+    });
+  }
+  function paint(){
+    Array.prototype.forEach.call(list.children, function(el,i){
+      el.classList.toggle('sel', i===selIdx);
+    });
+  }
+  function run(c){ closePal(); setTimeout(c.act, 60); }
+  function openPal(){
+    backdrop.classList.add('open');
+    input.value=''; filtered = commands.slice(); selIdx=0; renderList();
+    setTimeout(function(){ input.focus(); }, 30);
+  }
+  function closePal(){ backdrop.classList.remove('open'); }
+  document.getElementById('palBtn').addEventListener('click', openPal);
+  backdrop.addEventListener('click', function(e){ if(e.target===backdrop) closePal(); });
+  input.addEventListener('input', function(){
+    var q = input.value.toLowerCase().trim();
+    filtered = commands.filter(function(c){ return c.label.toLowerCase().indexOf(q) > -1; });
+    selIdx = 0; renderList();
+  });
+  input.addEventListener('keydown', function(e){
+    if(e.key==='ArrowDown'){ e.preventDefault(); selIdx=Math.min(selIdx+1,filtered.length-1); paint(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); selIdx=Math.max(selIdx-1,0); paint(); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(filtered[selIdx]) run(filtered[selIdx]); }
+    else if(e.key==='Escape'){ closePal(); }
+  });
+
+  /* ---------- keyboard shortcuts ---------- */
+  var sectionKeys = {'1':'#social','2':'#performance','3':'#email','4':'#sales','5':'#bizdev'};
+  document.addEventListener('keydown', function(e){
+    var typing = /input|textarea|select/i.test(document.activeElement.tagName);
+    if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); openPal(); return; }
+    if(typing) return;
+    if(e.key.toLowerCase()==='k'){ e.preventDefault(); openPal(); return; }
+    if(e.key==='Escape'){ closePal(); return; }
+    if(sectionKeys[e.key]){ jump(sectionKeys[e.key]); }
+  });
+
+  /* ---------- nav active + progress + rail ---------- */
   var links = Array.prototype.slice.call(document.querySelectorAll('.navlink'));
   var secs = links.map(function(l){ return document.querySelector(l.getAttribute('href')); });
   function onScroll(){
@@ -842,6 +1533,7 @@ footer .foot-note{margin-top:56px;font-family:var(--mono);font-size:12px;color:r
     var h = document.documentElement;
     var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
     document.getElementById('progress').style.width = pct + '%';
+    updateRail();
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
